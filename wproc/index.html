@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Union and Difference Tables Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Union and Difference Tables Generator</h2>
+        <form id="tableForm">
+            <label for="tableA">Enter the path to table A (HTML):</label>
+            <input type="text" id="tableA" name="tableA" required>
+
+            <label for="tableB">Enter the path to table B (Excel):</label>
+            <input type="text" id="tableB" name="tableB" required>
+
+            <label for="unionFileName">Enter the name for the Union table output file (without extension):</label>
+            <input type="text" id="unionFileName" name="unionFileName" required>
+
+            <label for="differenceFileName">Enter the name for the Difference table output file (without extension):</label>
+            <input type="text" id="differenceFileName" name="differenceFileName" required>
+
+            <button type="button" onclick="generateTables()">Generate Tables</button>
+        </form>
+
+        <div id="outputMessage"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
