@@ -1142,37 +1142,6 @@ if ('serviceWorker' in navigator) {
         }
       }
 
-      /* Click animation: Explosion effect */
-      .custom-button-wrapper #lucid-mode-button:focus {
-        outline: 0;
-      }
-
-      .custom-button-wrapper #lucid-mode-button:before,
-      .custom-button-wrapper #lucid-mode-button:after {
-        position: absolute;
-        content: "";
-        display: block;
-        width: 140%;
-        height: 100%;
-        left: -20%;
-        z-index: -1000;
-        transition: all ease-in-out 0.5s;
-        background-repeat: no-repeat;
-      }
-
-      .custom-button-wrapper #lucid-mode-button:before {
-        display: none;
-        top: -75%;
-        background-image: url("chrome-extension://hhckidpbkbmoeejbddojbdgidalionif/images/star.svg"),url("chrome-extension://hhckidpbkbmoeejbddojbdgidalionif/images/star.svg"),url("chrome-extension://hhckidpbkbmoeejbddojbdgidalionif/images/star.svg"),url("chrome-extension://hhckidpbkbmoeejbddojbdgidalionif/images/star.svg"),url("chrome-extension://hhckidpbkbmoeejbddojbdgidalionif/images/star.svg"),url("chrome-extension://hhckidpbkbmoeejbddojbdgidalionif/images/star.svg"),url("chrome-extension://hhckidpbkbmoeejbddojbdgidalionif/images/star.svg"),url("chrome-extension://hhckidpbkbmoeejbddojbdgidalionif/images/star.svg"),url("chrome-extension://hhckidpbkbmoeejbddojbdgidalionif/images/star.svg");
-        background-size: 7px, 9px, 6px, 11px, 10px, 7px, 9px, 7px, 10px;
-      }
-
-      .custom-button-wrapper #lucid-mode-button:after {
-        display: none;
-        bottom: -75%;
-        background-image: url("chrome-extension://hhckidpbkbmoeejbddojbdgidalionif/images/star.svg"),url("chrome-extension://hhckidpbkbmoeejbddojbdgidalionif/images/star.svg"),url("chrome-extension://hhckidpbkbmoeejbddojbdgidalionif/images/star.svg"),url("chrome-extension://hhckidpbkbmoeejbddojbdgidalionif/images/star.svg"),url("chrome-extension://hhckidpbkbmoeejbddojbdgidalionif/images/star.svg"),url("chrome-extension://hhckidpbkbmoeejbddojbdgidalionif/images/star.svg"),url("chrome-extension://hhckidpbkbmoeejbddojbdgidalionif/images/star.svg");
-        background-size: 9px, 11px, 10px, 11px, 9px, 7px, 11px;
-      }
 
       .custom-button-wrapper[exploding] #lucid-mode-button:before {
         display: block;
