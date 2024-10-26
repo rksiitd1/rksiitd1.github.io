@@ -2441,310 +2441,323 @@
 
                       <div id="dialogContainer" class="VN--hide positionRightTop react-draggable" style="transform: translate(0px, 0px);">
                     <div id="workAroundDiv" class="WorkAroundDivStyled-sc-hfr1pv iVmxmm">
+
+
+
+
+
+
+
+
+
+
+
+                      
                       <template shadowrootmode="open">
-                      <div id="styleContainer">
-                        <style data-styled="active" data-styled-version="5.3.3">
-                          /* General button styles */
-                          .gqRoph {
-                            display: inline-flex;
-                            align-items: center;
-                            justify-content: center;
-                            border-radius: 6px;
-                            border: none;
-                            outline: none;
-                            height: 40px;
-                            line-height: 40px;
-                            font-size: 14px;
-                            font-weight: 500;
-                            padding: 0 10px;
-                            width: 100%;
-                            cursor: pointer;
-                            transition-property: background-color, color, opacity;
-                            transition-duration: 0.2s;
-                            white-space: nowrap;
-                            background-color: #000000;
-                            color: #FFFFFF;
-                          }
+                        <div id="styleContainer">
+                          <style data-styled="active" data-styled-version="5.3.3">
+                            /* General button styles */
+                            .gqRoph {
+                              display: inline-flex;
+                              align-items: center;
+                              justify-content: center;
+                              border-radius: 6px;
+                              border: none;
+                              outline: none;
+                              height: 40px;
+                              line-height: 40px;
+                              font-size: 14px;
+                              font-weight: 500;
+                              padding: 0 10px;
+                              width: 100%;
+                              cursor: pointer;
+                              transition-property: background-color, color, opacity;
+                              transition-duration: 0.2s;
+                              white-space: nowrap;
+                              background-color: #000000;
+                              color: #FFFFFF;
+                            }
 
-                          .gqRoph:hover,
-                          .gqRoph:active,
-                          .gqRoph:focus {
-                            background-color: #DA3832;
-                          }
+                            .gqRoph:hover,
+                            .gqRoph:active,
+                            .gqRoph:focus {
+                              background-color: #DA3832;
+                            }
 
-                          /* Flex container styles */
-                          .hbgLvd {
-                            display: flex;
-                            flex-direction: column;
-                            flex: 1;
-                            min-height: 0;
-                          }
+                            /* Flex container styles */
+                            .hbgLvd {
+                              display: flex;
+                              flex-direction: column;
+                              flex: 1;
+                              min-height: 0;
+                            }
 
-                          .hbgLvd * {
+                            .hbgLvd * {
+                              box-sizing: border-box;
+                              font-family: 'Inter', sans-serif;
+                            }
+
+                            /* Flex alignment classes */
+                            .iRgYD {
+                              display: flex;
+                              width: auto;
+                              align-items: center;
+                              justify-content: flex-end;
+                              flex-direction: row;
+                              flex-wrap: nowrap;
+                            }
+
+                            .jIsWtr {
+                              display: flex;
+                              width: auto;
+                              align-items: center;
+                              justify-content: flex-start;
+                              flex-direction: column;
+                              flex-wrap: nowrap;
+                            }
+
+                            /* Link styles */
+                            .kfBmN {
+                              font-weight: 600;
+                              font-size: 14px;
+                              cursor: pointer;
+                              color: #DA3832;
+                              text-decoration: none;
+                            }
+
+                            /* Icon styles */
+                            .gCvmvt {
+                              width: 24px;
+                              height: 24px;
+                              mask-image: url(chrome-extension://hbklahkfbghjgbclbfcnhpfmajkagnci/icons/eye.svg);
+                              mask-position: center center;
+                              mask-repeat: no-repeat;
+                              mask-size: cover;
+                              background-color: #8C8B8A;
+                              flex-shrink: 0;
+                              cursor: pointer;
+                            }
+
+                            /* Close button styles */
+                            .kxgMyi {
+                              background: transparent url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iMTIiIGZpbGw9IiNDRUNFQ0UiLz4KPHBhdGggZD0iTTggMTZMMTYgOCIgc3Ryb2tlPSIjRkFGQUZBIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8cGF0aCBkPSJNMTYgMTZMOCA4IiBzdHJva2U9IiNGQUZBRkEiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo=) no-repeat center;
+                              border-radius: 50%;
+                              order: 1;
+                              flex-shrink: 0;
+                              width: 20px;
+                              height: 20px;
+                              margin-left: 10px;
+                              position: relative;
+                              visibility: hidden;
+                              transition: visibility 0.2s;
+                            }
+
+                            .kxgMyi:active {
+                              visibility: visible;
+                            }
+
+                            /* Input field styles */
+                            .bWUMQT {
+                              border: none;
+                              padding: 0;
+                              display: block;
+                              order: 0;
+                              width: 100%;
+                              height: 40px;
+                              font-size: 16px;
+                              letter-spacing: -0.02em;
+                              color: inherit;
+                              background-color: transparent;
+                              cursor: pointer;
+                            }
+
+                            .bWUMQT::placeholder {
+                              transition: color 0.2s;
+                              color: #8C8B8A;
+                            }
+
+                            /* Icon positioning */
+                            .izQfTo {
+                              order: -1;
+                              margin-right: 12px;
+                            }
+
+                            /* Container styles */
+                            .iLKqbA {
+                              display: flex;
+                              height: 40px;
+                              align-items: center;
+                            }
+
+                            /* Input container styles with hover and focus effects */
+                            .fPxAlY,
+                            .dXfKxV {
+                              display: flex;
+                              align-items: center;
+                              justify-content: flex-start;
+                              border-radius: 8px;
+                              width: 100%;
+                              height: 100%;
+                              padding: 9px 12px;
+                              background-color: #FAFAFA;
+                              transition: background 0.2s;
+                              cursor: pointer;
+                            }
+
+                            .fPxAlY:hover,
+                            .dXfKxV:hover {
+                              color: #211E1C;
+                              background-color: #EDEDED;
+                            }
+
+                            /* Hover and focus effects for input placeholder */
+                            .fPxAlY:hover .Input-sc-1k4k7f1::placeholder,
+                            .dXfKxV:hover .Input-sc-1k4k7f1::placeholder {
+                              color: #211E1C;
+                            }
+
+                            .fPxAlY:active .Input-sc-1k4k7f1::placeholder,
+                            .dXfKxV:active .Input-sc-1k4k7f1::placeholder,
+                            .fPxAlY .Input-sc-1k4k7f1:focus::placeholder,
+                            .dXfKxV .Input-sc-1k4k7f1:focus::placeholder {
+                              color: transparent;
+                            }
+
+                            .fPxAlY .Input-sc-1k4k7f1:focus,
+                            .dXfKxV .Input-sc-1k4k7f1:focus {
+                              outline: none;
+                              border: none;
+                              box-shadow: none;
+                            }
+
+                            /* Logo styles */
+                            .fmghtm {
+                              width: 20px;
+                              height: 20px;
+                              background-image: url(chrome-extension://hbklahkfbghjgbclbfcnhpfmajkagnci/icons/vn_logo.svg);
+                              background-position: center center;
+                              background-repeat: no-repeat;
+                              background-size: cover;
+                            }
+
+                            /* Main container styles */
+                            .cnssDQ {
+                              width: 100%;
+                              min-height: 800px;
+                              padding: 139px 44px 24px;
+                              box-shadow: 0 20px 30px 0 rgba(46,42,79,0.15);
+                              border: 1px solid #CECECE;
+                              border-radius: 20px;
+                              position: relative;
+                              min-height: auto;
+                              max-width: 300px;
+                              border: none;
+                              padding: 0;
+                              background-color: transparent;
+                              box-shadow: none;
+                            }
+
+                            /* Pseudo-elements for background images */
+                            .cnssDQ::before,
+                            .cnssDQ::after {
+                              content: '';
+                              position: absolute;
+                              z-index: -1;
+                              left: -348px;
+                              bottom: -20px;
+                              width: 483px;
+                              height: 686px;
+                              background: url(eb398044a7d9129e6542641f0cfe8983.svg) center;
+                            }
+
+                            .cnssDQ::after {
+                              background-image: url(55ec3367395b02d581c3ce85a1eb800b.svg);
+                              width: 700px;
+                              height: 843px;
+                              left: 89px;
+                              bottom: -16px;
+                            }
+
+                            /* Typography styles */
+                            .cOZmSi {
+                              text-align: center;
+                              font-weight: 600;
+                              font-size: 24px;
+                              line-height: 29px;
+                              letter-spacing: -0.01em;
+                              color: #211E1C;
+                              margin-bottom: 14px;
+                            }
+
+                            .gA-DREe {
+                              text-align: center;
+                              font-size: 14px;
+                              line-height: 140%;
+                              letter-spacing: -0.02em;
+                              color: #211E1C;
+                              margin-bottom: 44px;
+                            }
+
+                            /* Additional styles for various components */
+                            /* ... (remaining styles) ... */
+
+                            /* Resizing handles */
+                            .bmGsVh {
+                              width: 16px;
+                              height: 8px;
+                              display: block;
+                              float: left;
+                              left: 10px;
+                              cursor: nesw-resize;
+                              transform: rotate(90deg);
+                            }
+
+                            .hWsXzv {
+                              width: 16px;
+                              height: 8px;
+                              margin-bottom: 5px;
+                              float: right;
+                              right: -5px;
+                              display: block;
+                              cursor: nwse-resize;
+                            }
+
+                            /* Main content container */
+                            .iVmxmm {
+                              display: flex;
+                              flex-direction: column;
+                              flex-grow: 1;
+                              min-height: 0;
+                              border-radius: 10px;
+                              background: none !important;
+                            }
+
+                            .iVmxmm:host {
+                              background: none !important;
+                            }
+                          </style>
+                        </div>
+                        
+                        <style>
+                          :host {
+                            all: initial;
+                            color: black;
+                            background: white;
+                          }
+                          
+                          #rootReactVNB * { 
                             box-sizing: border-box;
                             font-family: 'Inter', sans-serif;
                           }
-
-                          /* Flex alignment classes */
-                          .iRgYD {
-                            display: flex;
-                            width: auto;
-                            align-items: center;
-                            justify-content: flex-end;
-                            flex-direction: row;
-                            flex-wrap: nowrap;
-                          }
-
-                          .jIsWtr {
-                            display: flex;
-                            width: auto;
-                            align-items: center;
-                            justify-content: flex-start;
-                            flex-direction: column;
-                            flex-wrap: nowrap;
-                          }
-
-                          /* Link styles */
-                          .kfBmN {
-                            font-weight: 600;
-                            font-size: 14px;
-                            cursor: pointer;
-                            color: #DA3832;
-                            text-decoration: none;
-                          }
-
-                          /* Icon styles */
-                          .gCvmvt {
-                            width: 24px;
-                            height: 24px;
-                            mask-image: url(chrome-extension://hbklahkfbghjgbclbfcnhpfmajkagnci/icons/eye.svg);
-                            mask-position: center center;
-                            mask-repeat: no-repeat;
-                            mask-size: cover;
-                            background-color: #8C8B8A;
-                            flex-shrink: 0;
-                            cursor: pointer;
-                          }
-
-                          /* Close button styles */
-                          .kxgMyi {
-                            background: transparent url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iMTIiIGZpbGw9IiNDRUNFQ0UiLz4KPHBhdGggZD0iTTggMTZMMTYgOCIgc3Ryb2tlPSIjRkFGQUZBIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8cGF0aCBkPSJNMTYgMTZMOCA4IiBzdHJva2U9IiNGQUZBRkEiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo=) no-repeat center;
-                            border-radius: 50%;
-                            order: 1;
-                            flex-shrink: 0;
-                            width: 20px;
-                            height: 20px;
-                            margin-left: 10px;
-                            position: relative;
-                            visibility: hidden;
-                            transition: visibility 0.2s;
-                          }
-
-                          .kxgMyi:active {
-                            visibility: visible;
-                          }
-
-                          /* Input field styles */
-                          .bWUMQT {
-                            border: none;
-                            padding: 0;
-                            display: block;
-                            order: 0;
-                            width: 100%;
-                            height: 40px;
-                            font-size: 16px;
-                            letter-spacing: -0.02em;
-                            color: inherit;
-                            background-color: transparent;
-                            cursor: pointer;
-                          }
-
-                          .bWUMQT::placeholder {
-                            transition: color 0.2s;
-                            color: #8C8B8A;
-                          }
-
-                          /* Icon positioning */
-                          .izQfTo {
-                            order: -1;
-                            margin-right: 12px;
-                          }
-
-                          /* Container styles */
-                          .iLKqbA {
-                            display: flex;
-                            height: 40px;
-                            align-items: center;
-                          }
-
-                          /* Input container styles with hover and focus effects */
-                          .fPxAlY,
-                          .dXfKxV {
-                            display: flex;
-                            align-items: center;
-                            justify-content: flex-start;
-                            border-radius: 8px;
-                            width: 100%;
-                            height: 100%;
-                            padding: 9px 12px;
-                            background-color: #FAFAFA;
-                            transition: background 0.2s;
-                            cursor: pointer;
-                          }
-
-                          .fPxAlY:hover,
-                          .dXfKxV:hover {
-                            color: #211E1C;
-                            background-color: #EDEDED;
-                          }
-
-                          /* Hover and focus effects for input placeholder */
-                          .fPxAlY:hover .Input-sc-1k4k7f1::placeholder,
-                          .dXfKxV:hover .Input-sc-1k4k7f1::placeholder {
-                            color: #211E1C;
-                          }
-
-                          .fPxAlY:active .Input-sc-1k4k7f1::placeholder,
-                          .dXfKxV:active .Input-sc-1k4k7f1::placeholder,
-                          .fPxAlY .Input-sc-1k4k7f1:focus::placeholder,
-                          .dXfKxV .Input-sc-1k4k7f1:focus::placeholder {
-                            color: transparent;
-                          }
-
-                          .fPxAlY .Input-sc-1k4k7f1:focus,
-                          .dXfKxV .Input-sc-1k4k7f1:focus {
-                            outline: none;
-                            border: none;
-                            box-shadow: none;
-                          }
-
-                          /* Logo styles */
-                          .fmghtm {
-                            width: 20px;
-                            height: 20px;
-                            background-image: url(chrome-extension://hbklahkfbghjgbclbfcnhpfmajkagnci/icons/vn_logo.svg);
-                            background-position: center center;
-                            background-repeat: no-repeat;
-                            background-size: cover;
-                          }
-
-                          /* Main container styles */
-                          .cnssDQ {
-                            width: 100%;
-                            min-height: 800px;
-                            padding: 139px 44px 24px;
-                            box-shadow: 0 20px 30px 0 rgba(46,42,79,0.15);
-                            border: 1px solid #CECECE;
-                            border-radius: 20px;
-                            position: relative;
-                            min-height: auto;
-                            max-width: 300px;
-                            border: none;
-                            padding: 0;
-                            background-color: transparent;
-                            box-shadow: none;
-                          }
-
-                          /* Pseudo-elements for background images */
-                          .cnssDQ::before,
-                          .cnssDQ::after {
-                            content: '';
-                            position: absolute;
-                            z-index: -1;
-                            left: -348px;
-                            bottom: -20px;
-                            width: 483px;
-                            height: 686px;
-                            background: url(eb398044a7d9129e6542641f0cfe8983.svg) center;
-                          }
-
-                          .cnssDQ::after {
-                            background-image: url(55ec3367395b02d581c3ce85a1eb800b.svg);
-                            width: 700px;
-                            height: 843px;
-                            left: 89px;
-                            bottom: -16px;
-                          }
-
-                          /* Typography styles */
-                          .cOZmSi {
-                            text-align: center;
-                            font-weight: 600;
-                            font-size: 24px;
-                            line-height: 29px;
-                            letter-spacing: -0.01em;
-                            color: #211E1C;
-                            margin-bottom: 14px;
-                          }
-
-                          .gA-DREe {
-                            text-align: center;
-                            font-size: 14px;
-                            line-height: 140%;
-                            letter-spacing: -0.02em;
-                            color: #211E1C;
-                            margin-bottom: 44px;
-                          }
-
-                          /* Additional styles for various components */
-                          /* ... (remaining styles) ... */
-
-                          /* Resizing handles */
-                          .bmGsVh {
-                            width: 16px;
-                            height: 8px;
-                            display: block;
-                            float: left;
-                            left: 10px;
-                            cursor: nesw-resize;
-                            transform: rotate(90deg);
-                          }
-
-                          .hWsXzv {
-                            width: 16px;
-                            height: 8px;
-                            margin-bottom: 5px;
-                            float: right;
-                            right: -5px;
-                            display: block;
-                            cursor: nwse-resize;
-                          }
-
-                          /* Main content container */
-                          .iVmxmm {
-                            display: flex;
-                            flex-direction: column;
-                            flex-grow: 1;
-                            min-height: 0;
-                            border-radius: 10px;
-                            background: none !important;
-                          }
-
-                          .iVmxmm:host {
-                            background: none !important;
+                          
+                          @keyframes blinker {
+                            66% {
+                              opacity: 0;
+                            }
                           }
                         </style>
+                        <iframe src="about:blank" aria-hidden="true" tabindex="-1" frameborder="0" style="display: block; opacity: 0; position: absolute; top: 0px; left: 0px; height: 100%; width: 100%; overflow: hidden; pointer-events: none; z-index: -1;"></iframe>
                       </div>
-                      
-                      <style>
-                        :host {
-                          all: initial;
-                          color: black;
-                          background: white;
-                        }
-                        
-                        #rootReactVNB * { 
-                          box-sizing: border-box;
-                          font-family: 'Inter', sans-serif;
-                        }
-                        
-                        @keyframes blinker {
-                          66% {
-                            opacity: 0;
-                          }
-                        }
-                      </style>
-                      <iframe src="about:blank" aria-hidden="true" tabindex="-1" frameborder="0" style="display: block; opacity: 0; position: absolute; top: 0px; left: 0px; height: 100%; width: 100%; overflow: hidden; pointer-events: none; z-index: -1;"></iframe>
                     </div>
                   </div>
                 </div>
@@ -2755,13 +2768,32 @@
               </template>
 
 
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </div>
-
-            </div>
-
-
+</div>
+</div>
+</div>
 <div>
   <div>
     <video 
@@ -2801,21 +2833,28 @@
     ></video>
   </div>
 </div>
-
-
-
-</div></div></div><div data-ux="Block" class="x-el x-el-div c1-1 c1-2 c1-h c1-12 c1-q c1-w c1-x c1-13 c1-14 c1-b c1-c c1-d c1-e c1-f c1-g"></div><div data-ux="Block" class="x-el x-el-div c1-1 c1-2 c1-o c1-v c1-15 c1-16 c1-17 c1-b c1-c c1-d c1-18 c1-e c1-f c1-g"><div data-ux="Block" class="x-el x-el-div c1-1 c1-2 c1-19 c1-4 c1-b c1-c c1-d c1-1a c1-e c1-f c1-g"><div data-ux="Block" class="x-el x-el-div c1-1 c1-2 c1-1b c1-4 c1-1c c1-b c1-c c1-d c1-e c1-f c1-g"><div data-ux="Block" class="x-el x-el-div c1-1 c1-2 c1-1d c1-1c c1-b c1-c c1-d c1-e c1-f c1-g"><nav data-ux="Block" class="x-el x-el-nav c1-1 c1-2 c1-o c1-1e c1-1f c1-1g c1-1h c1-1c c1-1i c1-b c1-c c1-d c1-1j c1-1k c1-1l c1-1m c1-e c1-f c1-g"><div data-ux="Block" class="x-el x-el-div c1-1 c1-2 c1-1n c1-1o c1-4 c1-v c1-r c1-1p c1-t c1-1q c1-1r c1-b c1-c c1-d c1-1s c1-e c1-f c1-g"><div data-ux="Block" class="x-el x-el-div c1-1 c1-2 c1-v c1-4 c1-1t c1-17 c1-1u c1-1v c1-1w c1-b c1-c c1-d c1-e c1-f c1-g"><div data-ux="Block" data-aid="HEADER_LOGO_RENDERED" class="x-el x-el-div c1-1x c1-1y c1-1z c1-4 c1-c c1-20 c1-21 c1-22 c1-d c1-e c1-f c1-g"><a rel="" role="link" aria-haspopup="menu" data-ux="Link" data-page="287f429b-ed6e-416e-aa2a-319409973b79" title="rksiitd" href="https://rtnesharma.in/" data-typography="LinkAlpha" class="x-el x-el-a c1-23 c1-24 c1-25 c1-26 c1-1u c1-27 c1-28 c1-29 c1-2a c1-2b c1-2c c1-1z c1-4 c1-b c1-2d c1-c c1-2e c1-2f c1-2g c1-d c1-e c1-f c1-g" data-tccl="ux2.HEADER.header9.Logo.Fill.Link.Default.61145.click,click"><div data-ux="Block" id="logo-container-61146" class="x-el x-el-div c1-1 c1-2 c1-1x c1-4 c1-o c1-b c1-c c1-d c1-e c1-f c1-g"><h3 role="heading" aria-level="3" data-ux="LogoHeading" id="logo-text-61147" data-aid="HEADER_LOGO_TEXT_RENDERED" fontscalemultiplier="0.52" data-typography="LogoAlpha" data-font-scaled="true" class="x-el x-el-h3 c1-2h c1-2i c1-26 c1-1u c1-2j c1-1q c1-1p c1-r c1-t c1-1z c1-1x c1-2k c1-2l c1-2m c1-2n c1-d c1-e c1-2o c1-2p">rksiitd</h3><span role="heading" aria-level="NaN" data-ux="scaler" data-size="xxlarge" data-scaler-id="scaler-logo-container-61146" aria-hidden="true" fontscalemultiplier="0.52" data-typography="LogoAlpha" data-font-scaled="true" class="x-el x-el-span c1-2h c1-2i c1-2q c1-2r c1-2j c1-1q c1-1p c1-r c1-t c1-1z c1-10 c1-2k c1-2s c1-q c1-2t c1-2u c1-x c1-2v c1-2l c1-2n c1-2w c1-2x c1-2y c1-2z">rksiitd</span><span role="heading" aria-level="NaN" data-ux="scaler" data-size="xlarge" data-scaler-id="scaler-logo-container-61146" aria-hidden="true" fontscalemultiplier="0.52" data-typography="LogoAlpha" data-font-scaled="true" class="x-el x-el-span c1-2h c1-2i c1-2q c1-2r c1-2j c1-1q c1-1p c1-r c1-t c1-1z c1-10 c1-2k c1-2s c1-q c1-2t c1-2u c1-x c1-2m c1-2l c1-2n c1-d c1-e c1-2o c1-2p">rksiitd</span><span role="heading" aria-level="NaN" data-ux="scaler" data-size="large" data-scaler-id="scaler-logo-container-61146" aria-hidden="true" fontscalemultiplier="0.52" data-typography="LogoAlpha" data-font-scaled="true" class="x-el x-el-span c1-2h c1-2i c1-2q c1-2r c1-2j c1-1q c1-1p c1-r c1-t c1-1z c1-10 c1-2k c1-2s c1-q c1-2t c1-2u c1-x c1-30 c1-2l c1-2n c1-31 c1-32 c1-33 c1-34">rksiitd</span></div></a></div></div><div data-ux="Block" class="x-el x-el-div c1-1 c1-2 c1-35 c1-36 c1-37 c1-v c1-38 c1-b c1-c c1-d c1-e c1-f c1-g"></div></div><div data-ux="Container" class="x-el x-el-div c1-1 c1-2 c1-u c1-s c1-1g c1-1h c1-1z c1-b c1-c c1-d c1-e c1-f c1-g"><div data-ux="Block" id="navBarId-61149" class="x-el x-el-div c1-1 c1-2 c1-10 c1-17 c1-1n c1-1o c1-39 c1-3a c1-b c1-c c1-d c1-3b c1-e c1-f c1-g"><div data-ux="Block" class="x-el x-el-div c1-1 c1-2 c1-36 c1-v c1-1n c1-17 c1-3c c1-3d c1-3e c1-b c1-c c1-d c1-e c1-f c1-g"><div data-ux="Block" data-aid="HEADER_LOGO_RENDERED" class="x-el x-el-div c1-1x c1-1y c1-1z c1-4 c1-1t c1-c c1-3f c1-3g c1-3h c1-3i c1-d c1-e c1-f c1-g"><a rel="" role="link" aria-haspopup="menu" data-ux="Link" data-page="287f429b-ed6e-416e-aa2a-319409973b79" title="rksiitd" href="https://rtnesharma.in/" data-typography="LinkAlpha" class="x-el x-el-a c1-23 c1-24 c1-25 c1-26 c1-1u c1-27 c1-28 c1-29 c1-2a c1-2b c1-2c c1-1z c1-4 c1-b c1-2d c1-c c1-2e c1-2f c1-2g c1-d c1-e c1-f c1-g" data-tccl="ux2.HEADER.header9.Logo.Fill.Link.Default.61150.click,click"><div data-ux="Block" id="logo-container-61151" class="x-el x-el-div c1-1 c1-2 c1-1x c1-4 c1-o c1-b c1-c c1-d c1-e c1-f c1-g"><span role="heading" aria-level="NaN" data-ux="scaler" data-size="xxlarge" data-scaler-id="scaler-logo-container-61151" aria-hidden="true" fontscalemultiplier="0.52" data-typography="LogoAlpha" data-font-scaled="true" class="x-el x-el-span c1-2h c1-2i c1-2q c1-2r c1-2j c1-1q c1-1p c1-r c1-t c1-1z c1-10 c1-2k c1-2s c1-q c1-2t c1-2u c1-x c1-2v c1-2l c1-2n c1-2w c1-2x c1-2y c1-2z">rksiitd</span><span role="heading" aria-level="NaN" data-ux="scaler" data-size="xlarge" data-scaler-id="scaler-logo-container-61151" aria-hidden="true" fontscalemultiplier="0.52" data-typography="LogoAlpha" data-font-scaled="true" class="x-el x-el-span c1-2h c1-2i c1-2q c1-2r c1-2j c1-1q c1-1p c1-r c1-t c1-1z c1-10 c1-2k c1-2s c1-q c1-2t c1-2u c1-x c1-2m c1-2l c1-2n c1-d c1-e c1-2o c1-2p">rksiitd</span><span role="heading" aria-level="NaN" data-ux="scaler" data-size="large" data-scaler-id="scaler-logo-container-61151" aria-hidden="true" fontscalemultiplier="0.52" data-typography="LogoAlpha" data-font-scaled="true" class="x-el x-el-span c1-2h c1-2i c1-2q c1-2r c1-2j c1-1q c1-1p c1-r c1-t c1-1z c1-10 c1-2k c1-2s c1-q c1-2t c1-2u c1-x c1-30 c1-2l c1-2n c1-31 c1-32 c1-33 c1-34">rksiitd</span></div></a></div></div><div data-ux="Block" class="x-el x-el-div c1-1 c1-2 c1-v c1-3j c1-1n c1-3k c1-38 c1-b c1-c c1-d c1-e c1-f c1-g"></div></div></div></nav></div></div></div><div data-ux="Block" class="x-el x-el-div c1-1 c1-2 c1-4 c1-3l c1-10 c1-3m c1-15 c1-3n c1-r c1-t c1-b c1-c c1-d c1-3o c1-3p c1-3b c1-e c1-f c1-g"><div data-ux="Container" class="x-el x-el-div c1-1 c1-2 c1-1q c1-1p c1-1g c1-1h c1-1z c1-v c1-b c1-c c1-3q c1-d c1-3r c1-3s c1-3t c1-3u c1-3v c1-e c1-3w c1-f c1-3x c1-g"><div data-ux="Hero" class="x-el x-el-div c1-1 c1-2 c1-o c1-r c1-t c1-1e c1-1f c1-4 c1-v c1-3n c1-15 c1-1t c1-b c1-c c1-d c1-3y c1-3z c1-40 c1-41 c1-42 c1-43 c1-44 c1-45 c1-e c1-f c1-g"><div data-ux="Block" class="x-el x-el-div c1-1 c1-2 c1-46 c1-b c1-c c1-d c1-e c1-f c1-g"><div data-ux="Element" id="tagline-container-61153" class="x-el x-el-div c1-1 c1-2 c1-26 c1-1u c1-2j c1-47 c1-o c1-1z c1-b c1-c c1-d c1-e c1-f c1-g" style=""><h1 role="heading" aria-level="1" data-ux="Tagline" data-aid="HEADER_TAGLINE_RENDERED" id="dynamic-tagline-61154" data-typography="HeadingAlpha" class="x-el x-el-h1 c1-1 c1-2 c1-26 c1-1u c1-2j c1-1q c1-1p c1-r c1-t c1-48 c1-1z c1-1x c1-1y c1-2l c1-49 c1-4a c1-4b c1-4c c1-4d c1-4e c1-4f c1-4g c1-4h c1-4i" data-last-size="64px">I explicitly condemn all those who are knowingly doing something wrong.</h1><span role="heading" aria-level="NaN" data-ux="scaler" data-size="xxxlarge" data-scaler-id="scaler-tagline-container-61153" aria-hidden="true" data-typography="HeadingAlpha" class="x-el x-el-span c1-1 c1-2 c1-2q c1-2r c1-2j c1-1q c1-1p c1-r c1-t c1-48 c1-1z c1-10 c1-2s c1-q c1-2t c1-2u c1-x c1-49 c1-1y c1-2l c1-4a c1-4b c1-4c c1-4d c1-4e c1-4f c1-4g c1-4h c1-4i" style="display: none;">I explicitly condemn all those who are knowingly doing something wrong.</span><span role="heading" aria-level="NaN" data-ux="scaler" data-size="xxlarge" data-scaler-id="scaler-tagline-container-61153" aria-hidden="true" data-typography="HeadingAlpha" class="x-el x-el-span c1-1 c1-2 c1-2q c1-2r c1-2j c1-1q c1-1p c1-r c1-t c1-48 c1-1z c1-10 c1-2s c1-q c1-2t c1-2u c1-x c1-4j c1-1y c1-2l c1-4a c1-4b c1-4c c1-4d c1-4e c1-4k c1-4l c1-4m c1-4n" style="display: none;">I explicitly condemn all those who are knowingly doing something wrong.</span><span role="heading" aria-level="NaN" data-ux="scaler" data-size="xlarge" data-scaler-id="scaler-tagline-container-61153" aria-hidden="true" data-typography="HeadingAlpha" class="x-el x-el-span c1-1 c1-2 c1-2q c1-2r c1-2j c1-1q c1-1p c1-r c1-t c1-48 c1-1z c1-10 c1-2s c1-q c1-2t c1-2u c1-x c1-4o c1-1y c1-2l c1-4a c1-4b c1-4c c1-4d c1-4e c1-4p c1-4q c1-4r c1-4s" style="display: none;">I explicitly condemn all those who are knowingly doing something wrong.</span></div></div><div data-ux="Block" class="x-el x-el-div c1-1 c1-2 c1-46 c1-b c1-c c1-d c1-e c1-f c1-g"><div data-ux="HeroText" data-aid="HEADER_TAGLINE2_RENDERED" data-typography="BodyBeta" class="x-el c1-1 c1-2 c1-26 c1-1u c1-4t c1-r c1-t c1-1z c1-4u c1-4v c1-4w c1-4x c1-b c1-2l c1-4y c1-4a c1-4z c1-50 c1-51 c1-52 x-rt"><p style="margin:0"><span><br></span></p><p style="margin:0"><span>Ratnesh Kumar Sharma&nbsp;</span></p><p style="margin:0"><span>Founder <a href="https://aixb.world">AIxB</a>,&nbsp;</span></p><p style="margin:0"><span>Graduated, BTech, '23,&nbsp;</span></p><p style="margin:0"><span>Biochemical Engineering and Biotechnology,&nbsp;</span></p><p style="margin:0"><span>IIT Delhi.&nbsp;</span></p></div></div></div></div></div><div data-ux="Block" class="x-el x-el-div c1-1 c1-2 c1-4 c1-3l c1-v c1-3m c1-15 c1-3n c1-r c1-t c1-b c1-c c1-d c1-3o c1-3p c1-1s c1-e c1-f c1-g"><div data-ux="Container" class="x-el x-el-div c1-1 c1-2 c1-1q c1-1p c1-1g c1-1h c1-1z c1-v c1-b c1-c c1-3q c1-d c1-3r c1-3s c1-3t c1-3u c1-3v c1-e c1-3w c1-f c1-3x c1-g">
+</div>
+</div>
+<div data-ux="Block" class="x-el x-el-div c1-1 c1-2 c1-h c1-12 c1-q c1-w c1-x c1-13 c1-14 c1-b c1-c c1-d c1-e c1-f c1-g"></div>
+<div data-ux="Block" class="x-el x-el-div c1-1 c1-2 c1-o c1-v c1-15 c1-16 c1-17 c1-b c1-c c1-d c1-18 c1-e c1-f c1-g">
+  <div data-ux="Block" class="x-el x-el-div c1-1 c1-2 c1-19 c1-4 c1-b c1-c c1-d c1-1a c1-e c1-f c1-g">
+    <div data-ux="Block" class="x-el x-el-div c1-1 c1-2 c1-1b c1-4 c1-1c c1-b c1-c c1-d c1-e c1-f c1-g">
+      <div data-ux="Block" class="x-el x-el-div c1-1 c1-2 c1-1d c1-1c c1-b c1-c c1-d c1-e c1-f c1-g">
+        <nav data-ux="Block" class="x-el x-el-nav c1-1 c1-2 c1-o c1-1e c1-1f c1-1g c1-1h c1-1c c1-1i c1-b c1-c c1-d c1-1j c1-1k c1-1l c1-1m c1-e c1-f c1-g">
+          <div data-ux="Block" class="x-el x-el-div c1-1 c1-2 c1-1n c1-1o c1-4 c1-v c1-r c1-1p c1-t c1-1q c1-1r c1-b c1-c c1-d c1-e c1-f c1-g">
+            <div data-ux="Block" class="x-el x-el-div c1-1 c1-2 c1-v c1-4 c1-1t c1-17 c1-1u c1-1v c1-1w c1-b c1-c c1-d c1-e c1-f c1-g">
+              <div data-ux="Block" data-aid="HEADER_LOGO_RENDERED" class="x-el x-el-div c1-1x c1-1y c1-1z c1-4 c1-c c1-20 c1-21 c1-22 c1-d c1-e c1-f c1-g">
+                <a rel="" role="link" aria-haspopup="menu" data-ux="Link" data-page="287f429b-ed6e-416e-aa2a...(line too long; chars omitted)
 <div data-ux="Hero" class="x-el x-el-div c1-1 c1-2 c1-o c1-r c1-t c1-1e c1-1f c1-4 c1-v c1-3n c1-15 c1-1t c1-b c1-c c1-d c1-3y c1-3z c1-40 c1-41 c1-42 c1-43 c1-44 c1-45 c1-e c1-f c1-g">
-
   <div data-ux="Block" class="x-el x-el-div c1-1 c1-2 c1-46 c1-b c1-c c1-d c1-e c1-f c1-g">
     <div data-ux="Element" id="tagline-container-61155" class="x-el x-el-div c1-1 c1-2 c1-26 c1-1u c1-2j c1-47 c1-o c1-1z c1-b c1-c c1-d c1-e c1-f c1-g">
       <h1 role="heading" aria-level="1" data-ux="Tagline" data-aid="HEADER_TAGLINE_RENDERED" id="dynamic-tagline-61156" data-typography="HeadingAlpha" class="x-el x-el-h1 c1-1 c1-2 c1-26 c1-1u c1-2j c1-1q c1-1p c1-r c1-t c1-48 c1-1z c1-1x c1-1y c1-2l c1-49 c1-4a c1-4b c1-4c c1-4d c1-4e c1-4f c1-4g c1-4h c1-4i">
         I explicitly condemn all those who are knowingly doing something wrong.
       </h1>
-      <span role="heading" aria-level="NaN" data-ux="scaler" data-size="xxxlarge" data-scaler-id="scaler-tagline-container-61155" aria-hidden="true" data-typography="HeadingAlpha" class="x-el x-el-span c1-1 c1-2 c1-2q c1-2r c1-2j c1-1q c1-1p c1-r c1-t c1-48 c1-1z c1-10 c1-2s c1-q c1-2t c1-2u c1-x c1-49 c1-1y c1-2l c1-4a c1-4b c1-4c c1-4d c1-4e c1-4f c1-4g c1-4h c1-4i">
+      <span role="heading" aria-level="NaN" data-ux="scaler" data-size="xxxlarge" data-scaler-id="scaler-tagline-container-61155" aria-hidden="true" data-typography="HeadingAlpha" class="x-el x-el-span c1-1 c1-2 c1-2q c1-2r c1-2j c1-1q c1-1p c1-r c1-t c1-48 c1-1z c1-10 c1-2s c1-q c1-2t c1-2u c1-x c1-49 c1-1y c1-2l c1-4a c1-4b c1-4c c1-4d c1-4e c1-4k c1-4l c1-4m c1-4n">
         I explicitly condemn all those who are knowingly doing something wrong.
       </span>
-      <span role="heading" aria-level="NaN" data-ux="scaler" data-size="xxlarge" data-scaler-id="scaler-tagline-container-61155" aria-hidden="true" data-typography="HeadingAlpha" class="x-el x-el-span c1-1 c1-2 c1-2q c1-2r c1-2j c1-1q c1-1p c1-r c1-t c1-48 c1-1z c1-10 c1-2s c1-q c1-2t c1-2u c1-x c1-4j c1-1y c1-2l c1-4a c1-4b c1-4c c1-4d c1-4e c1-4k c1-4l c1-4m c1-4n">
+      <span role="heading" aria-level="NaN" data-ux="scaler" data-size="xxlarge" data-scaler-id="scaler-tagline-container-61155" aria-hidden="true" data-typography="HeadingAlpha" class="x-el x-el-span c1-1 c1-2 c1-2q c1-2r c1-2j c1-1q c1-1p c1-r c1-t c1-48 c1-1z c1-10 c1-2s c1-q c1-2t c1-2u c1-x c1-4j c1-1y c1-2l c1-4a c1-4b c1-4c c1-4d c1-4e c1-4p c1-4q c1-4r c1-4s">
         I explicitly condemn all those who are knowingly doing something wrong.
       </span>
       <span role="heading" aria-level="NaN" data-ux="scaler" data-size="xlarge" data-scaler-id="scaler-tagline-container-61155" aria-hidden="true" data-typography="HeadingAlpha" class="x-el x-el-span c1-1 c1-2 c1-2q c1-2r c1-2j c1-1q c1-1p c1-r c1-t c1-48 c1-1z c1-10 c1-2s c1-q c1-2t c1-2u c1-x c1-4o c1-1y c1-2l c1-4a c1-4b c1-4c c1-4d c1-4e c1-4p c1-4q c1-4r c1-4s">
