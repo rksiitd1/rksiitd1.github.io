@@ -3,292 +3,299 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Beginning of Infinity - A Journey into Knowledge</title>
+    <title>Visual Infinity Enhanced</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
-        :root {
-            --primary: #1a237e;
-            --secondary: #7986cb;
-            --accent: #ff4081;
-            --text: #333;
-            --light: #f5f5f5;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            overflow-x: hidden;
-        }
-
-        .hero {
-            height: 100vh;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            position: relative;
             overflow: hidden;
         }
 
-        .hero-content {
+        body {
+            background: #000;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #three-canvas {
             z-index: 1;
-            max-width: 800px;
-            padding: 2rem;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            opacity: 0;
-            transform: translateY(30px);
+        #matter-canvas {
+            z-index: 2;
+            pointer-events: all;
         }
 
-        .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            opacity: 0;
-            transform: translateY(30px);
+        .glow-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
+            mix-blend-mode: screen;
+        }
+
+        .cursor-trail {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            pointer-events: none;
+            z-index: 4;
+            mix-blend-mode: screen;
+            background: radial-gradient(circle at center, rgba(0,255,255,0.8), transparent);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
         }
 
         .particles {
-            position: absolute;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
+            z-index: 2;
+            pointer-events: none;
         }
 
-        .section {
-            padding: 6rem 2rem;
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .energy-field {
+            position: absolute;
+            background: radial-gradient(circle at center, 
+                rgba(64, 224, 208, 0.1), 
+                rgba(0, 255, 255, 0.05),
+                transparent);
+            border-radius: 50%;
+            mix-blend-mode: screen;
+            pointer-events: none;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin: 1rem;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: transform 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .cta {
-            background: var(--accent);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .quote {
-            font-style: italic;
-            font-size: 1.5rem;
-            text-align: center;
-            margin: 2rem 0;
-            color: var(--primary);
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            .hero p {
-                font-size: 1.2rem;
-            }
-            .section {
-                padding: 4rem 1rem;
-            }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            pointer-events: none;
+            background: radial-gradient(circle at center,
+                transparent 0%,
+                rgba(0,0,0,0.1) 50%,
+                rgba(0,0,0,0.3) 100%);
         }
     </style>
 </head>
 <body>
-    <div class="hero">
-        <div class="particles" id="particles"></div>
-        <div class="hero-content">
-            <h1>The Beginning of Infinity</h1>
-            <h2 style="font-size: 1.8rem; margin: 1rem 0; opacity: 0; transform: translateY(30px);">By David Deutsch</h2>
-            <p>Embark on an intellectual journey that will transform your understanding of science, progress, and human potential</p>
-            <a href="#main" class="cta">Discover More</a>
-        </div>
-    </div>
-
-    <section class="section" id="main">
-        <div class="container">
-            <div class="quote">
-                "All progress comes from the quest for good explanations"
-            </div>
-            <div class="grid">
-                <div class="card">
-                    <h3>Why This Book Matters</h3>
-                    <p>Explore fundamental questions about human knowledge, scientific progress, and our capacity for understanding the universe. This groundbreaking work challenges conventional wisdom about the limits of human understanding.</p>
-                </div>
-                <div class="card">
-                    <h3>Key Ideas Explored</h3>
-                    <p>Discover how good explanations drive progress, why creativity matters in science, and how human knowledge can be truly infinite in scope. Learn about the role of criticism in developing better ideas.</p>
-                </div>
-                <div class="card">
-                    <h3>Transform Your Thinking</h3>
-                    <p>Challenge your assumptions about knowledge, progress, and human potential. Develop a deeper understanding of how science works and why optimism about human progress is justified.</p>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 4rem;">
-                <a href="https://www.amazon.in/s?k=the+beginning+of+infinity+by+david+deutsch" target="_blank" class="cta">Start Reading Now</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" style="background: linear-gradient(135deg, #1a237e, #303f9f);">
-        <div class="container">
-            <div class="card" style="max-width: 800px; margin: 0 auto; text-align: center; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);">
-                <h2 style="color: var(--primary); font-size: 2.5rem; margin-bottom: 2rem; font-weight: 300;">About David Deutsch</h2>
-                <p style="font-size: 1.2rem; margin-bottom: 1.5rem; line-height: 1.8;">
-                    David Deutsch is a pioneering theoretical physicist, quantum computing visionary, and philosopher of science at Oxford University. He is a Fellow of the Royal Society and a member of the Centre for Quantum Computation at the Clarendon Laboratory, Oxford University.
-                </p>
-                <p style="font-size: 1.2rem; margin-bottom: 1.5rem;">
-                    His contributions to quantum physics, particularly his quantum theory of computation and his "many-worlds" interpretation of quantum mechanics, have revolutionized our understanding of reality. Beyond physics, he is renowned for his innovative perspectives on philosophy, knowledge, and progress.
-                </p>
-                <p style="font-size: 1.2rem;">
-                    Through "The Beginning of Infinity" and his other works, Deutsch challenges conventional thinking about human knowledge and capabilities, arguing that our potential for understanding and progress is truly infinite.
-                </p>
-            </div>
-        </div>
-    </section>
+    <canvas id="three-canvas"></canvas>
+    <canvas id="matter-canvas"></canvas>
+    <div class="particles"></div>
+    <div class="glow-layer"></div>
+    <div class="overlay"></div>
 
     <script>
-        gsap.registerPlugin(ScrollTrigger);
-
-        // Animate hero elements
-        gsap.to('.hero h1', {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            delay: 0.5
+        // Three.js Setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({
+            canvas: document.getElementById('three-canvas'),
+            alpha: true
         });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.position.z = 5;
 
-        gsap.to('.hero p', {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            delay: 0.8
-        });
+        // Create cosmic background
+        function createCosmicBackground() {
+            const geometry = new THREE.BufferGeometry();
+            const vertices = [];
+            const sizes = [];
+            const colors = [];
 
-        // Animate cards on scroll
-        gsap.utils.toArray('.card').forEach((card, i) => {
-            gsap.to(card, {
-                scrollTrigger: {
-                    trigger: card,
-                    start: 'top bottom-=100',
-                    toggleActions: 'play none none reverse'
-                },
-                opacity: 1,
-                y: 0,
-                duration: 0.6,
-                delay: i * 0.2
+            for (let i = 0; i < 10000; i++) {
+                vertices.push(
+                    (Math.random() - 0.5) * 2000,
+                    (Math.random() - 0.5) * 2000,
+                    (Math.random() - 0.5) * 2000
+                );
+
+                const color = new THREE.Color();
+                color.setHSL(Math.random(), 0.8, 0.8);
+                colors.push(color.r, color.g, color.b);
+                sizes.push(Math.random() * 4);
+            }
+
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+            geometry.setAttribute('size', new THREE.Float32BufferAttribute(sizes, 1));
+
+            const material = new THREE.PointsMaterial({
+                size: 0.1,
+                vertexColors: true,
+                transparent: true
             });
+
+            const points = new THREE.Points(geometry, material);
+            scene.add(points);
+
+            return points;
+        }
+
+        // Matter.js Setup
+        const Engine = Matter.Engine,
+              Render = Matter.Render,
+              World = Matter.World,
+              Bodies = Matter.Bodies,
+              Mouse = Matter.Mouse,
+              MouseConstraint = Matter.MouseConstraint;
+
+        const engine = Engine.create({
+            gravity: { x: 0, y: 0, scale: 0.001 }
+        });
+        
+        const render = Render.create({
+            canvas: document.querySelector('#matter-canvas'),
+            engine: engine,
+            options: {
+                width: window.innerWidth,
+                height: window.innerHeight,
+                wireframes: false,
+                background: 'transparent'
+            }
         });
 
-        // Animate quote
-        gsap.to('.quote', {
-            scrollTrigger: {
-                trigger: '.quote',
-                start: 'top bottom-=100',
-                toggleActions: 'play none none reverse'
-            },
-            opacity: 1,
-            y: 0,
-            duration: 0.8
-        });
+        // Create interactive particles
+        function createInteractiveParticles() {
+            const particles = [];
+            const colors = [
+                '#00ffff', // Cyan
+                '#ff00ff', // Magenta
+                '#4169e1', // Royal Blue
+                '#7b68ee', // Medium Slate Blue
+                '#40e0d0'  // Turquoise
+            ];
 
-        // Animate author name in hero section
-        gsap.to('.hero h2', {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            delay: 0.65
-        });
+            for (let i = 0; i < 30; i++) {
+                const radius = Math.random() * 20 + 10;
+                const particle = Bodies.circle(
+                    Math.random() * window.innerWidth,
+                    Math.random() * window.innerHeight,
+                    radius,
+                    {
+                        render: {
+                            fillStyle: colors[Math.floor(Math.random() * colors.length)],
+                            opacity: 0.6,
+                            strokeStyle: '#ffffff',
+                            lineWidth: 1
+                        },
+                        restitution: 0.9,
+                        frictionAir: 0.002,
+                        density: 0.001
+                    }
+                );
+                particles.push(particle);
+            }
 
-        // Create particle effect
-        function createParticles() {
-            const particles = document.getElementById('particles');
-            const particleCount = 50;
+            World.add(engine.world, particles);
+        }
 
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.style.position = 'absolute';
-                particle.style.width = '2px';
-                particle.style.height = '2px';
-                particle.style.background = 'rgba(255, 255, 255, 0.5)';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = Math.random() * 100 + '%';
-                particles.appendChild(particle);
+        // Create energy fields
+        function createEnergyFields() {
+            const container = document.querySelector('.particles');
+            for (let i = 0; i < 20; i++) {
+                const field = document.createElement('div');
+                field.className = 'energy-field';
+                const size = Math.random() * 300 + 100;
+                field.style.width = `${size}px`;
+                field.style.height = `${size}px`;
+                field.style.left = `${Math.random() * 100}%`;
+                field.style.top = `${Math.random() * 100}%`;
+                container.appendChild(field);
 
-                gsap.to(particle, {
-                    x: 'random(-100, 100)',
-                    y: 'random(-100, 100)',
-                    opacity: 'random(0.3, 0.7)',
-                    duration: 'random(2, 4)',
+                gsap.to(field, {
+                    x: 'random(-200, 200)',
+                    y: 'random(-200, 200)',
+                    scale: 'random(0.5, 1.5)',
+                    duration: 'random(10, 20)',
                     repeat: -1,
                     yoyo: true,
-                    ease: 'none'
+                    ease: 'sine.inOut'
                 });
             }
         }
 
-        createParticles();
+        // Cursor trail effect
+        function createCursorTrail(e) {
+            const trail = document.createElement('div');
+            trail.className = 'cursor-trail';
+            document.body.appendChild(trail);
+            
+            trail.style.left = e.clientX + 'px';
+            trail.style.top = e.clientY + 'px';
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+            gsap.to(trail, {
+                scale: 20,
+                opacity: 0,
+                duration: 1,
+                ease: 'power2.out',
+                onComplete: () => trail.remove()
             });
-        });
+        }
+
+        // Initialize
+        function init() {
+            const cosmicPoints = createCosmicBackground();
+            createInteractiveParticles();
+            createEnergyFields();
+
+            // Mouse interaction
+            const mouse = Mouse.create(render.canvas);
+            const mouseConstraint = MouseConstraint.create(engine, {
+                mouse: mouse,
+                constraint: {
+                    stiffness: 0.2,
+                    render: {
+                        visible: false
+                    }
+                }
+            });
+
+            World.add(engine.world, mouseConstraint);
+            render.mouse = mouse;
+
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+                renderer.render(scene, camera);
+                cosmicPoints.rotation.y += 0.0005;
+                cosmicPoints.rotation.x += 0.0002;
+            }
+
+            // Start engines
+            Engine.run(engine);
+            Render.run(render);
+            animate();
+
+            // Event listeners
+            window.addEventListener('mousemove', createCursorTrail);
+            window.addEventListener('resize', () => {
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                render.canvas.width = window.innerWidth;
+                render.canvas.height = window.innerHeight;
+            });
+        }
+
+        window.addEventListener('load', init);
     </script>
 </body>
 </html>
