@@ -33,6 +33,8 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
+            position: relative;
+            padding-bottom: 40px;
         }
 
         .card:hover {
@@ -131,6 +133,50 @@
             transform: translateY(0);
             box-shadow: 0 2px 4px rgba(255, 0, 0, 0.2);
         }
+
+        .card-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 0 0 0.75rem 0.75rem;
+            overflow: hidden;
+        }
+
+        .wave {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.2;
+        }
+
+        .wave-1 {
+            background: linear-gradient(90deg, transparent, var(--primary));
+            animation: wave-animation 8s linear infinite;
+        }
+
+        .wave-2 {
+            background: linear-gradient(90deg, transparent, var(--secondary));
+            animation: wave-animation 12s linear infinite;
+            animation-delay: -2s;
+        }
+
+        .wave-3 {
+            background: linear-gradient(90deg, transparent, var(--accent));
+            animation: wave-animation 16s linear infinite;
+            animation-delay: -4s;
+        }
+
+        @keyframes wave-animation {
+            0% {
+                transform: translateX(-100%) skewX(45deg);
+            }
+            100% {
+                transform: translateX(100%) skewX(45deg);
+            }
+        }
     </style>
 </head>
 <body>
@@ -226,11 +272,13 @@
                 return styles[professor] || 'object-position: center 20%;';
             }
 
+            const categoryClass = course.category.replace(/\s+/g, '-');
+            
             return `
-                <div class="card rounded-xl p-6 floating">
+                <div class="card rounded-xl p-6 floating card-${categoryClass}">
                     <div class="flex flex-col h-full justify-between">
                         <div>
-                            <div class="category-pill mb-4">${course.category}</div>
+                            <div class="category-pill category-${categoryClass} mb-4">${course.category}</div>
                             <h3 class="text-xl font-bold mb-2">${course.code}</h3>
                             <h4 class="text-lg mb-4 break-words" style="padding-right: ${course.image ? '160px' : '0'}">${course.title}</h4>
                             ${course.professor ? `
@@ -253,6 +301,11 @@
                                 </div>
                             </div>
                         ` : ''}
+                    </div>
+                    <div class="card-footer">
+                        <div class="wave wave-1"></div>
+                        <div class="wave wave-2"></div>
+                        <div class="wave wave-3"></div>
                     </div>
                 </div>
             `;
