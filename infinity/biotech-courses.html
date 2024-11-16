@@ -80,6 +80,19 @@
         .floating {
             animation: float 3s ease-in-out infinite;
         }
+
+        .professor-image {
+            border: 3px solid transparent;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent));
+            background-size: 200% 200%;
+            animation: gradientBorder 3s ease infinite;
+        }
+
+        @keyframes gradientBorder {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
     </style>
 </head>
 <body>
@@ -149,7 +162,7 @@
             { code: "BBL733", title: "Recombinant DNA Technology", professor: "Ritu Kulshreshtha", link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonMxoPGbahliCAvhA10qwcEg", category: "Biotechnology" },
             { code: "BBL341", title: "Environmental Biotechnology", professor: "Saroj Mishra", link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonOo3EVuACaIEsdOj_SMbNUn", category: "Biotechnology" },
             { code: "BBL433", title: "Enzyme Science and Engineering", professor: "Krishna Jyoti Mukherjee", link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonMze2MPl5E7wok1626JTMfA", category: "Biochemical Engineering" },
-            { code: "BBL131", title: "Biochemistry", professor: "Prashant Mishra", link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonPcGRZiABiZHWO4PlwpnhOm", category: "Biochemistry" },
+            { code: "BBL131", title: "Biochemistry", professor: "Prashant Mishra", link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonPcGRZiABiZHWO4PlwpnhOm", category: "Biochemistry", image: "https://beb.iitd.ac.in/images/prashant.jpg" },
             { code: "BBL132", title: "General Microbiology", professor: "Shilpi Sharma", link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonNi3sxMi31_7AkJc4sNNtyD", category: "Microbiology" },
             { code: "BBL431", title: "Bioprocess Technology", professor: "Shaikh Ziauddin Ahammad", link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonPjZsgnGNV_sWr0RPdNkOuz", category: "Bioprocess Engineering" },
             { code: "SBL726", title: "Molecular Motors", professor: "Anita Roy", link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonMNkFpMq75BMgNny4kQdZgf", category: "Systems Biology" },
@@ -162,13 +175,28 @@
         function createCourseCard(course) {
             return `
                 <div class="card rounded-xl p-6 floating">
-                    <div class="category-pill mb-4">${course.category}</div>
-                    <h3 class="text-xl font-bold mb-2">${course.code}</h3>
-                    <h4 class="text-lg mb-4">${course.title}</h4>
-                    ${course.professor ? `<p class="text-sm opacity-80 mb-4">Prof. ${course.professor}</p>` : ''}
-                    <a href="${course.link}" target="_blank" class="inline-block bg-gradient-to-r from-primary to-secondary text-background font-semibold py-2 px-4 rounded-lg hover:opacity-90 transition-opacity">
-                        Watch Course
-                    </a>
+                    <div class="flex justify-between">
+                        <div class="flex-1" style="max-width: calc(100% - 160px)">
+                            <div class="category-pill mb-4">${course.category}</div>
+                            <h3 class="text-xl font-bold mb-2">${course.code}</h3>
+                            <h4 class="text-lg mb-4 break-words">${course.title}</h4>
+                            ${course.professor ? `
+                                <p class="text-sm opacity-80 mb-4">Prof. ${course.professor}</p>
+                            ` : ''}
+                            <a href="${course.link}" target="_blank" class="inline-block bg-gradient-to-r from-primary to-secondary text-background font-semibold py-2 px-4 rounded-lg hover:opacity-90 transition-opacity">
+                                Watch Course
+                            </a>
+                        </div>
+                        ${course.image ? `
+                            <div class="flex-shrink-0">
+                                <img src="${course.image}" 
+                                     alt="Professor ${course.professor}" 
+                                     class="w-32 h-32 rounded-full object-cover professor-image"
+                                     style="margin: 32px 24px 24px 24px"
+                                >
+                            </div>
+                        ` : ''}
+                    </div>
                 </div>
             `;
         }
