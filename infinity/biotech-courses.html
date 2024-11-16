@@ -349,6 +349,29 @@
             z-index: 1;
             padding: 2rem 1rem;
         }
+
+        /* Adjust spacing for the header and search section */
+        header.container {
+            margin-bottom: 6rem; /* Increased bottom margin */
+            padding-top: 4rem;   /* Increased top padding */
+        }
+
+        /* Adjust search input container spacing */
+        .max-w-md.mx-auto {
+            margin-top: 3rem;    /* Add space above search */
+            margin-bottom: 1rem;  /* Reduced from 2rem to 1rem */
+        }
+
+        /* Adjust course grid spacing */
+        #courseGrid {
+            margin-top: 1rem;  /* Reduced from 2rem to 1rem */
+        }
+
+        /* If needed, adjust the particles container to match */
+        #particles-js {
+            top: 0;
+            height: calc(100% + 8rem); /* Increase height to account for added spacing */
+        }
     </style>
 </head>
 <body>
@@ -376,9 +399,9 @@
         <div id="particles-js"></div>
 
         <header class="container mx-auto px-4 py-8">
-            <h1 class="text-4xl md:text-6xl font-bold text-center mb-4 gradient-text">DBEB Course Catalog</h1>
-            <p class="text-center text-xl mb-8 opacity-80">Explore Biotechnology & Engineering Courses</p>
-            <div class="max-w-md mx-auto">
+            <h1 class="text-4xl md:text-6xl font-bold text-center mb-12 gradient-text">DBEB Course Catalog</h1>
+            <p class="text-center text-xl mb-16 opacity-80">Explore Biotechnology & Engineering Courses</p>
+            <div class="max-w-md mx-auto mt-16 mb-4">
                 <input type="text" 
                        id="searchInput" 
                        placeholder="Search by course code, title, professor, or category..." 
@@ -387,7 +410,7 @@
             </div>
         </header>
 
-        <main class="container mx-auto px-4 py-8">
+        <main class="container mx-auto px-4">
             <div id="courseGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Courses will be dynamically inserted here -->
             </div>
@@ -403,10 +426,10 @@
         particlesJS('particles-js', {
             particles: {
                 number: { 
-                    value: 100,
+                    value: 60,         // Reduced number of particles
                     density: { 
                         enable: true, 
-                        value_area: 1000
+                        value_area: 1500  // Increased area, making lines more sparse
                     } 
                 },
                 color: { value: "#4facfe" },
@@ -421,7 +444,7 @@
                 },
                 line_linked: {
                     enable: true,
-                    distance: 150,
+                    distance: 200,      // Increased distance between connected lines
                     color: "#4facfe",
                     opacity: 0.4,
                     width: 1
@@ -450,7 +473,7 @@
                 },
                 modes: {
                     grab: {
-                        distance: 200,
+                        distance: 250,  // Increased grab distance
                         line_linked: {
                             opacity: 0.7
                         }
