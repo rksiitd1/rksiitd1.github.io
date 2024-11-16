@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Quasar Visualization</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: black;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Scene setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Camera position
+        camera.position.set(0, 20, 50);
+
+        // Basic orbit controls implementation
+        let isDragging = false;
+        let previousMousePosition = {
+            x: 0,
+            y: 0
+        };
+
+        document.addEventListener('mousedown', (e) => {
+            isDragging = true;
+        });
+
+        document.addEventListener('mouseup', (e) => {
+            isDragging = false;
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                const deltaMove = {
+                    x: e.clientX - previousMousePosition.x,
+                    y: e.clientY - previousMousePosition.y
+                };
+
+                camera.position.x += deltaMove.x * 0.05;
+                camera.position.y -= deltaMove.y * 0.05;
+                camera.lookAt(scene.position);
+            }
+
+            previousMousePosition = {
+                x: e.clientX,
+                y: e.clientY
+            };
+        });
+
+        // Lights
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
+
+        const pointLight = new THREE.PointLight(0xffffff, 2, 100);
+        pointLight.position.set(20, 50, 50);
+        scene.add(pointLight);
+
+        // Accretion disk
+        const diskGeometry = new THREE.RingGeometry(10, 20, 128);
+        const diskMaterial = new THREE.MeshPhongMaterial({
+            color: 0xff6600,
+            emissive: 0xff3300,
+            emissiveIntensity: 0.5,
+            transparent: true,
+            opacity: 0.8,
+            side: THREE.DoubleSide
+        });
+        const accretionDisk = new THREE.Mesh(diskGeometry, diskMaterial);
+        accretionDisk.rotation.x = Math.PI / 2;
+        scene.add(accretionDisk);
+
+        // Jets
+        const jetParticles = new THREE.BufferGeometry();
+        const jetCount = 1000;
+        const positions = new Float32Array(jetCount * 3);
+        
+        for (let i = 0; i < jetCount * 3; i += 3) {
+            positions[i] = (Math.random() - 0.5) * 5;
+            positions[i + 1] = Math.random() * 50;
+            positions[i + 2] = (Math.random() - 0.5) * 5;
+        }
+        
+        jetParticles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        const jetMaterial = new THREE.PointsMaterial({
+            color: 0x00ccff,
+            size: 0.5,
+            transparent: true,
+            opacity: 0.7
+        });
+        const jets = new THREE.Points(jetParticles, jetMaterial);
+        jets.rotation.x = Math.PI / 2;
+        scene.add(jets);
+
+        // Central core
+        const coreGeometry = new THREE.SphereGeometry(3, 32, 32);
+        const coreMaterial = new THREE.MeshStandardMaterial({
+            emissive: 0xff0000,
+            emissiveIntensity: 2,
+            color: 0xffffff
+        });
+        const core = new THREE.Mesh(coreGeometry, coreMaterial);
+        scene.add(core);
+
+        // Starfield background
+        const starGeometry = new THREE.BufferGeometry();
+        const starCount = 5000;
+        const starPositions = new Float32Array(starCount * 3);
+        
+        for (let i = 0; i < starCount * 3; i += 3) {
+            starPositions[i] = (Math.random() - 0.5) * 500;
+            starPositions[i + 1] = (Math.random() - 0.5) * 500;
+            starPositions[i + 2] = (Math.random() - 0.5) * 500;
+        }
+        
+        starGeometry.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
+        const starMaterial = new THREE.PointsMaterial({
+            color: 0xffffff,
+            size: 0.5
+        });
+        const stars = new THREE.Points(starGeometry, starMaterial);
+        scene.add(stars);
+
+        // Animation loop
+        const clock = new THREE.Clock();
+
+        function animate() {
+            const elapsedTime = clock.getElapsedTime();
+
+            // Rotate accretion disk
+            accretionDisk.rotation.z += 0.005;
+
+            // Animate jets
+            jets.rotation.z = elapsedTime * 0.5;
+
+            // Pulse core
+            core.material.emissiveIntensity = 1.5 + Math.sin(elapsedTime * 2) * 0.5;
+
+            // Render
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Add zoom functionality
+        document.addEventListener('wheel', (e) => {
+            camera.position.z += e.deltaY * 0.1;
+            camera.position.z = Math.max(10, Math.min(100, camera.position.z));
+        });
+    </script>
+</body>
+</html>
