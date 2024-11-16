@@ -168,7 +168,7 @@
             { code: "SBL726", title: "Molecular Motors", professor: "Anita Roy", link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonMNkFpMq75BMgNny4kQdZgf", category: "Systems Biology" },
             { code: "BBL331", title: "Bioprocess Engineering", professor: "Atul Narang", link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonOXRguTR8o39VBMbOcX7uWU", category: "Bioprocess Engineering" },
             { code: "MSL802", title: "Intellectual Property Rights Management", professor: "S.K. Jain", link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonOo853OouJ5t9xmFtspORxO", category: "Management" },
-            { code: "BBL231", title: "Molecular Biology and Genetics", professor: "Preeti Srivastava", link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonME8BsCeC7BISUyv5ExzxfK", category: "Molecular Biology" }
+            { code: "BBL231", title: "Molecular Biology and Genetics", professor: "Preeti Srivastava", link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonME8BsCeC7BISUyv5ExzxfK", category: "Molecular Biology", image: "https://beb.iitd.ac.in/images/preeti.jpg" }
         ];
 
         // Function to create course cards
@@ -176,10 +176,10 @@
             return `
                 <div class="card rounded-xl p-6 floating">
                     <div class="flex justify-between">
-                        <div class="flex-1" style="max-width: calc(100% - 160px)">
+                        <div class="flex-1">
                             <div class="category-pill mb-4">${course.category}</div>
                             <h3 class="text-xl font-bold mb-2">${course.code}</h3>
-                            <h4 class="text-lg mb-4 break-words">${course.title}</h4>
+                            <h4 class="text-lg mb-4 break-words" style="padding-right: ${course.image ? '160px' : '0'}">${course.title}</h4>
                             ${course.professor ? `
                                 <p class="text-sm opacity-80 mb-4">Prof. ${course.professor}</p>
                             ` : ''}
@@ -188,11 +188,11 @@
                             </a>
                         </div>
                         ${course.image ? `
-                            <div class="flex-shrink-0">
+                            <div class="flex-shrink-0" style="position: absolute; right: 24px;">
                                 <img src="${course.image}" 
                                      alt="Professor ${course.professor}" 
                                      class="w-32 h-32 rounded-full object-cover professor-image"
-                                     style="margin: 32px 24px 24px 24px"
+                                     style="margin: 48px 24px 16px 24px"
                                 >
                             </div>
                         ` : ''}
