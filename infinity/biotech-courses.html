@@ -98,6 +98,24 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+
+        .youtube-button {
+            background-color: #ff0000;  /* YouTube red */
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 10px 16px;
+            border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .youtube-button:hover {
+            background-color: #cc0000;  /* Darker red on hover */
+        }
     </style>
 </head>
 <body>
@@ -199,7 +217,10 @@
                             ${course.professor ? `
                                 <p class="text-sm opacity-80 mb-4">Prof. ${course.professor}</p>
                             ` : ''}
-                            <a href="${course.link}" target="_blank" class="inline-block bg-gradient-to-r from-primary to-secondary text-background font-semibold py-2 px-4 rounded-lg hover:opacity-90 transition-opacity">
+                            <a href="${course.link}" target="_blank" class="youtube-button inline-flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                                </svg>
                                 Watch Course
                             </a>
                         </div>
