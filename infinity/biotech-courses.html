@@ -64,11 +64,15 @@
 
         .category-pill {
             background: linear-gradient(45deg, var(--primary), var(--secondary));
-            padding: 0.25rem 0.75rem;
+            padding: 6px 12px;
             border-radius: 9999px;
             font-size: 0.75rem;
             color: var(--background);
             font-weight: 600;
+            display: block;
+            height: 28px;
+            line-height: 16px;
+            text-align: left;
         }
 
         @keyframes float {
@@ -100,21 +104,32 @@
         }
 
         .youtube-button {
-            background-color: #ff0000;  /* YouTube red */
+            background-color: #ff0000;
             color: white;
-            font-size: 14px;
-            font-weight: 500;
-            padding: 10px 16px;
-            border-radius: 2px;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 999px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: all 0.2s;
+            letter-spacing: 0.3px;
+            transition: all 0.2s ease;
             border: none;
             cursor: pointer;
+            display: inline-block;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            height: 28px;
+            line-height: 16px;
         }
 
         .youtube-button:hover {
-            background-color: #cc0000;  /* Darker red on hover */
+            background-color: #f00;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(255, 0, 0, 0.3);
+        }
+
+        .youtube-button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(255, 0, 0, 0.2);
         }
     </style>
 </head>
@@ -125,7 +140,11 @@
         <h1 class="text-4xl md:text-6xl font-bold text-center mb-4 gradient-text">DBEB Course Catalog</h1>
         <p class="text-center text-xl mb-8 opacity-80">Explore Biotechnology & Engineering Courses</p>
         <div class="max-w-md mx-auto">
-            <input type="text" id="searchInput" placeholder="Search courses..." class="w-full p-4 rounded-lg search-input" onkeyup="filterCourses()">
+            <input type="text" 
+                   id="searchInput" 
+                   placeholder="Search by course code, title, professor, or category..." 
+                   class="w-full p-4 rounded-lg search-input" 
+                   onkeyup="filterCourses()">
         </div>
     </header>
 
@@ -209,18 +228,17 @@
 
             return `
                 <div class="card rounded-xl p-6 floating">
-                    <div class="flex justify-between">
-                        <div class="flex-1">
+                    <div class="flex flex-col h-full justify-between">
+                        <div>
                             <div class="category-pill mb-4">${course.category}</div>
                             <h3 class="text-xl font-bold mb-2">${course.code}</h3>
                             <h4 class="text-lg mb-4 break-words" style="padding-right: ${course.image ? '160px' : '0'}">${course.title}</h4>
                             ${course.professor ? `
                                 <p class="text-sm opacity-80 mb-4">Prof. ${course.professor}</p>
                             ` : ''}
-                            <a href="${course.link}" target="_blank" class="youtube-button inline-flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
-                                </svg>
+                        </div>
+                        <div class="mt-auto">
+                            <a href="${course.link}" target="_blank" class="youtube-button">
                                 Watch Course
                             </a>
                         </div>
@@ -246,7 +264,8 @@
             const filteredCourses = courses.filter(course => 
                 course.code.toLowerCase().includes(searchTerm) ||
                 course.title.toLowerCase().includes(searchTerm) ||
-                course.professor.toLowerCase().includes(searchTerm)
+                course.professor.toLowerCase().includes(searchTerm) ||
+                course.category.toLowerCase().includes(searchTerm)
             );
             
             document.getElementById('courseGrid').innerHTML = filteredCourses.map(createCourseCard).join('');
