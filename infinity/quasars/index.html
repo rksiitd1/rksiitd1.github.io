@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quasar Visual</title>
+    <style>
+        body {
+            margin: 0;
+            background: radial-gradient(circle, #000, #03031a, #05054d);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .quasar {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            animation: spin 10s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .disk {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(
+                from 90deg,
+                rgba(255, 255, 0, 0.8),
+                rgba(255, 0, 0, 0.6),
+                rgba(0, 255, 255, 0.8),
+                rgba(255, 255, 0, 0.8)
+            );
+            box-shadow: 0 0 30px rgba(255, 255, 0, 0.8);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        .jets {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .jet {
+            position: absolute;
+            width: 10px;
+            height: 300px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+            filter: blur(2px);
+        }
+
+        .jet.top {
+            top: -290px;
+        }
+
+        .jet.bottom {
+            bottom: -290px;
+            transform: rotate(180deg);
+        }
+
+        .core {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, #fff, #ff6f00, #000);
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="quasar">
+        <div class="disk"></div>
+        <div class="jets">
+            <div class="jet top"></div>
+            <div class="jet bottom"></div>
+        </div>
+        <div class="core"></div>
+    </div>
+    <script>
+        // Optional: Add interactivity (e.g., mousemove effects)
+        document.body.addEventListener('mousemove', (e) => {
+            const { clientX, clientY } = e;
+            const quasar = document.querySelector('.quasar');
+            const rect = quasar.getBoundingClientRect();
+            const x = (clientX - rect.left) / rect.width - 0.5;
+            const y = (clientY - rect.top) / rect.height - 0.5;
+            quasar.style.transform = `rotateX(${y * 30}deg) rotateY(${x * 30}deg)`;
+        });
+    </script>
+</body>
+</html>
