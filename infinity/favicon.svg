@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Background -->
+  <rect width="512" height="512" fill="#1a1a1a"/>
+  
+  <!-- Larger infinity symbol -->
+  <path d="M256 156
+           C196 156, 136 196, 136 256
+           C136 316, 196 356, 256 356
+           C316 356, 376 316, 376 256
+           C376 196, 316 156, 256 156
+           
+           M256 206
+           C216 206, 186 226, 186 256
+           C186 286, 216 306, 256 306
+           C296 306, 326 286, 326 256
+           C326 226, 296 206, 256 206"
+        fill="none" 
+        stroke="#00ffff"
+        stroke-width="24"
+        stroke-linecap="round"/>
+  
+  <!-- Central point representing the beginning -->
+  <circle cx="256" cy="256" r="24" fill="#00ffff"/>
+  
+  <!-- Emanating rays -->
+  <g stroke="#00ffff" stroke-width="16" opacity="0.8">
+    <line x1="256" y1="96" x2="256" y2="32"/>
+    <line x1="352" y1="160" x2="416" y2="96"/>
+    <line x1="160" y1="160" x2="96" y2="96"/>
+    <line x1="416" y1="416" x2="352" y2="352"/>
+    <line x1="96" y1="416" x2="160" y2="352"/>
+    <line x1="256" y1="480" x2="256" y2="416"/>
+    <line x1="480" y1="256" x2="416" y2="256"/>
+    <line x1="32" y1="256" x2="96" y2="256"/>
+  </g>
+</svg>
