@@ -336,25 +336,34 @@
             width: 100%;
             height: 400px;
             margin-top: 100px;
-            background: #040911;
+            background: linear-gradient(180deg, #2f32dd, #060ace); /* Match hero section gradient */
+            color: #e6f1ff; /* Light text color for contrast */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
         }
 
-        .footer-glow,
-        .footer-particles,
-        .footer-line,
-        .footer-wave,
-        .footer-wave-1,
-        .footer-wave-2,
-        .footer-wave-3 {
-            display: none;
+        .footer-content {
+            max-width: 800px;
+        }
+
+        .footer-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-content p {
+            font-size: 1rem;
+            opacity: 0.8;
         }
 
         .hero-section {
             position: relative;
-            z-index: 2;
             width: 100%;
             height: 100vh;
-            background: #051630;
+            background: linear-gradient(180deg, #0c7fcc, #060ace); /* Soft blue gradient */
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -365,16 +374,12 @@
         }
 
         .hero-glow {
-            position: absolute;
-            width: 100%;
-            height: 100%;
             background: radial-gradient(
                 circle at 50% -20%,
-                #00d4ff 0%,
+                #00d4ff 0%,    /* Brighter cyan */
                 transparent 70%
             );
-            opacity: 0.2;
-            animation: glow-pulse 8s ease-in-out infinite;
+            opacity: 0.2;     /* Slightly increased opacity */
         }
 
         .hero-line {
@@ -463,7 +468,7 @@
         .hero-title {
             font-size: 4rem;
             font-weight: bold;
-            background: linear-gradient(45deg, #00d4ff, #0088ff);
+            background: linear-gradient(45deg, #00d4ff, #0088ff);  /* Brighter blue gradient */
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -569,7 +574,7 @@
 
     <!-- Footer -->
     <footer class="page-footer">
-        <!-- Empty footer or add static content if needed -->
+        <!-- No text content -->
     </footer>
 
     <script>
