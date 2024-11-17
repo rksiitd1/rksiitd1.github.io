@@ -527,6 +527,13 @@
             top: 0;
             height: calc(100% + 8rem); /* Increase height to account for added spacing */
         }
+
+        /* Add a media query for mobile devices */
+        @media (max-width: 640px) {
+            .hero-title .cursive {
+                font-style: italic; /* Apply cursive style */
+            }
+        }
     </style>
 </head>
 <body>
@@ -542,7 +549,9 @@
         <div class="hero-wave hero-wave-2"></div>
         <div class="hero-wave hero-wave-3"></div>
         
-        <h1 class="hero-title">The Beginning of Infinity</h1>
+        <h1 class="hero-title">
+            The Beginning <span class="cursive">of</span> Infinity
+        </h1>
         <p class="hero-subtitle">
             Explore the boundless potential of human knowledge and progress through curiously seeking good explanations over bad ones!
         </p>
