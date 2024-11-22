@@ -1,1 +1,128 @@
-Ratnesh Kumar Sharma
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultra Luxury Experience</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(45deg, #1a1a1a, #2c2c2c, #3d3d3d);
+            animation: gradientBG 15s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .luxury-container {
+            position: relative;
+            width: 80vmin;
+            height: 80vmin;
+        }
+        .luxury-element {
+            position: absolute;
+            border: 2px solid #d4af37;
+            border-radius: 50%;
+            animation: rotate 20s linear infinite;
+        }
+        .luxury-element::before {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #d4af37;
+            border-radius: 50%;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 1s infinite;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+        .diamond {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            border-bottom: 50px solid rgba(212, 175, 55, 0.7);
+            animation: shimmer 3s infinite;
+        }
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="luxury-container" id="luxury-container"></div>
+
+    <script>
+        const container = document.getElementById('luxury-container');
+
+        function createLuxuryElement(size, delay) {
+            const element = document.createElement('div');
+            element.classList.add('luxury-element');
+            element.style.width = `${size}%`;
+            element.style.height = `${size}%`;
+            element.style.top = `${(100 - size) / 2}%`;
+            element.style.left = `${(100 - size) / 2}%`;
+            element.style.animationDelay = `${delay}s`;
+            container.appendChild(element);
+        }
+
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle');
+            sparkle.style.left = `${Math.random() * 100}%`;
+            sparkle.style.top = `${Math.random() * 100}%`;
+            sparkle.style.animationDuration = `${Math.random() * 2 + 0.5}s`;
+            container.appendChild(sparkle);
+        }
+
+        function createDiamond() {
+            const diamond = document.createElement('div');
+            diamond.classList.add('diamond');
+            diamond.style.left = `${Math.random() * 80}%`;
+            diamond.style.top = `${Math.random() * 80}%`;
+            diamond.style.transform = `rotate(${Math.random() * 360}deg)`;
+            container.appendChild(diamond);
+        }
+
+        // Create luxury elements
+        for (let i = 0; i < 5; i++) {
+            createLuxuryElement(100 - i * 20, i * 0.5);
+        }
+
+        // Create sparkles
+        for (let i = 0; i < 50; i++) {
+            createSparkle();
+        }
+
+        // Create diamonds
+        for (let i = 0; i < 3; i++) {
+            createDiamond();
+        }
+    </script>
+</body>
+</html>
