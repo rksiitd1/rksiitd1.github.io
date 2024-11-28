@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Modern browsers supporting SVG favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <!-- Fallback for browsers that don't support SVG favicons -->
+    <link rel="alternate icon" type="image/png" href="favicon.png">
+    
+    <!-- Primary Meta Tags -->
+    <title>The Beginning of Infinity </title>
+    <meta name="title" content="The Beginning of Infinity - DBEB Course Catalog">
+    <meta name="description" content="Explore Biotechnology & Engineering Courses from DBEB, IIT Delhi. Access free educational content across Mathematics, Chemical Engineering, Biotechnology, and more.">
+    <meta name="keywords" content="DBEB, IIT Delhi, biotechnology courses, engineering courses, online education, free courses, chemical engineering, mathematics">
+    <meta name="author" content="DBEB IIT Delhi">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-domain.com/biotech-courses">
+    <meta property="og:title" content="The Beginning of Infinity - DBEB Course Catalog">
+    <meta property="og:description" content="Explore Biotechnology & Engineering Courses from DBEB, IIT Delhi. Access free educational content across Mathematics, Chemical Engineering, Biotechnology, and more.">
+    <meta property="og:image" content="https://your-domain.com/path-to-your-preview-image.jpg">
+    <meta property="og:site_name" content="The Beginning of Infinity">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://your-domain.com/biotech-courses">
+    <meta property="twitter:title" content="The Beginning of Infinity - DBEB Course Catalog">
+    <meta property="twitter:description" content="Explore Biotechnology & Engineering Courses from DBEB, IIT Delhi. Access free educational content across Mathematics, Chemical Engineering, Biotechnology, and more.">
+    <meta property="twitter:image" content="https://your-domain.com/path-to-your-preview-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <!-- Theme Color for Mobile Browsers -->
+    <meta name="theme-color" content="#0a192f">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@300&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00d4ff;
+            --secondary: #0088ff;
+            --accent: #0055ff;
+            --background: #051630;
+            --text: #e6f1ff;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            padding-bottom: 40px;
+            min-height: 280px;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 242, 254, 0.1);
+            border-color: var(--primary);
+        }
+
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .search-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text);
+        }
+
+        .search-input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+        }
+
+        .category-pill {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            padding: 6px 12px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            color: var(--background);
+            font-weight: 600;
+            display: block;
+            height: 28px;
+            line-height: 16px;
+            text-align: left;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .professor-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        /* Add gradient borders based on category */
+        .professor-container {
+            position: relative;
+            width: 128px;
+            height: 128px;
+            border-radius: 50%;
+            padding: 1.5px;
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            animation: rotating-gradient 8s linear infinite;
+        }
+
+        .professor-container::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            right: -1px;
+            bottom: -1px;
+            border-radius: 50%;
+            background: linear-gradient(
+                45deg,
+                #00f2fe,  /* Cyan */
+                #4facfe,  /* Bright blue */
+                #0575e6,  /* Deep blue */
+                #64ffff,  /* Light cyan */
+                #00f2fe   /* Back to start */
+            );
+            animation: rotating-border 4s linear infinite;
+            z-index: -1;
+        }
+
+        .professor-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            background: var(--background);
+        }
+
+        @keyframes rotating-border {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes rotating-gradient {
+            0% {
+                filter: hue-rotate(0deg);
+            }
+            100% {
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        /* Add hover effect */
+        .professor-container:hover::before {
+            animation: rotating-border 2s linear infinite;
+        }
+        
+        .professor-container:hover {
+            animation: rotating-gradient 4s linear infinite;
+        }
+
+        /* Category-specific gradient borders */
+        .professor-Mathematics {
+            background-image: 
+                linear-gradient(#0a192f, #0a192f), 
+                linear-gradient(45deg, #FF6B6B, #FF8E53);
+        }
+
+        .professor-Biotechnology {
+            background-image: 
+                linear-gradient(#0a192f, #0a192f), 
+                linear-gradient(45deg, #4facfe, #00f2fe);
+        }
+
+        .professor-Management {
+            background-image: 
+                linear-gradient(#0a192f, #0a192f), 
+                linear-gradient(45deg, #7F7FD5, #86A8E7);
+        }
+
+        .professor-Humanities {
+            background-image: 
+                linear-gradient(#0a192f, #0a192f), 
+                linear-gradient(45deg, #FF9A9E, #FAD0C4);
+        }
+
+        .professor-Chemical-Engineering {
+            background-image: 
+                linear-gradient(#0a192f, #0a192f), 
+                linear-gradient(45deg, #43E97B, #38F9D7);
+        }
+
+        .professor-Civil-Engineering {
+            background-image: 
+                linear-gradient(#0a192f, #0a192f), 
+                linear-gradient(45deg, #FA709A, #FEE140);
+        }
+
+        .professor-Materials-Science {
+            background-image: 
+                linear-gradient(#0a192f, #0a192f), 
+                linear-gradient(45deg, #667EEA, #764BA2);
+        }
+
+        .professor-Biochemical-Engineering {
+            background-image: 
+                linear-gradient(#0a192f, #0a192f), 
+                linear-gradient(45deg, #30CFD0, #330867);
+        }
+
+        .professor-Bioloogical-Sciences {
+            background-image: 
+                linear-gradient(#0a192f, #0a192f), 
+                linear-gradient(45deg, #6157FF, #EE49FD);
+        }
+
+        /* Add subtle animation on hover */
+        .professor-container {
+            transition: transform 0.3s ease;
+        }
+
+        .professor-container:hover {
+            transform: scale(1.05);
+        }
+
+        .youtube-button {
+            background-color: #ff0000;
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 999px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            height: 28px;
+            line-height: 16px;
+            max-width: calc(100% - 160px);
+        }
+
+        .youtube-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(79, 172, 254, 0.3);
+        }
+
+        .youtube-button:active {
+            transform: translateY(0);
+        }
+
+        .card-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 0 0 0.75rem 0.75rem;
+            overflow: hidden;
+        }
+
+        .wave {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.2;
+        }
+
+        .wave-1 {
+            background: linear-gradient(90deg, transparent, var(--primary));
+            animation: wave-animation 8s linear infinite;
+        }
+
+        .wave-2 {
+            background: linear-gradient(90deg, transparent, var(--secondary));
+            animation: wave-animation 12s linear infinite;
+            animation-delay: -2s;
+        }
+
+        .wave-3 {
+            background: linear-gradient(90deg, transparent, var(--accent));
+            animation: wave-animation 16s linear infinite;
+            animation-delay: -4s;
+        }
+
+        @keyframes wave-animation {
+            0% {
+                transform: translateX(-100%) skewX(45deg);
+            }
+            100% {
+                transform: translateX(100%) skewX(45deg);
+            }
+        }
+
+        .page-footer {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 800px;
+            margin-top: 100px;
+            background: linear-gradient(180deg, #2f32dd, #060ace); /* Match hero section gradient */
+            color: #e6f1ff; /* Light text color for contrast */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .footer-content {
+            max-width: 800px;
+        }
+
+        .footer-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-content p {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        .hero-section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(180deg, #0c7fcc, #060ace); /* Soft blue gradient */
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero-glow {
+            background: radial-gradient(
+                circle at 50% -20%,
+                #00d4ff 0%,    /* Brighter cyan */
+                transparent 70%
+            );
+            opacity: 0.2;     /* Slightly increased opacity */
+        }
+
+        .hero-line {
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(
+                90deg,
+                transparent 0%,
+                #00d4ff 50%,
+                transparent 100%
+            );
+            opacity: 0.35;
+            animation: line-slide 15s linear infinite;
+        }
+
+        .hero-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 50% 50%, #00d4ff 0%, transparent 0.5%),
+                radial-gradient(circle at 30% 70%, #0088ff 0%, transparent 0.5%),
+                radial-gradient(circle at 70% 30%, #0055ff 0%, transparent 0.5%);
+            opacity: 0.45;
+            animation: particle-float 20s ease-in-out infinite;
+        }
+
+        .hero-wave {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+        }
+
+        .hero-wave-1 {
+            background: linear-gradient(45deg, transparent 45%, #00d4ff 49%, transparent 51%);
+            background-size: 40px 40px;
+            animation: wave-slide 10s linear infinite;
+            opacity: 0.15;
+        }
+
+        .hero-wave-2 {
+            background: linear-gradient(-45deg, transparent 45%, #0088ff 49%, transparent 51%);
+            background-size: 30px 30px;
+            animation: wave-slide 8s linear infinite;
+            animation-delay: -4s;
+            opacity: 0.15;
+        }
+
+        .hero-wave-3 {
+            background: linear-gradient(60deg, transparent 45%, #0055ff 49%, transparent 51%);
+            background-size: 50px 50px;
+            animation: wave-slide 12s linear infinite;
+            animation-delay: -6s;
+            opacity: 0.15;
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% { opacity: 0.15; transform: scale(1); }
+            50% { opacity: 0.25; transform: scale(1.05); }
+        }
+
+        @keyframes line-slide {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
+        }
+
+        @keyframes particle-float {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(-20px, 20px); }
+            50% { transform: translate(20px, -20px); }
+            75% { transform: translate(-20px, -20px); }
+        }
+
+        @keyframes wave-slide {
+            0% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+
+        /* Add multiple floating lines */
+        .hero-line:nth-child(1) { top: 20%; animation-delay: -2s; }
+        .hero-line:nth-child(2) { top: 40%; animation-delay: -4s; }
+        .hero-line:nth-child(3) { top: 60%; animation-delay: -6s; }
+        .hero-line:nth-child(4) { top: 80%; animation-delay: -8s; }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #00d4ff, #0088ff);  /* Brighter blue gradient */
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 2rem;
+            z-index: 1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text);
+            max-width: 800px;
+            line-height: 1.6;
+            opacity: 0.8;
+            z-index: 1;
+        }
+
+        .main-content {
+            position: relative;
+            background-color: var(--background);
+            min-height: 100vh;
+            overflow: hidden;
+            z-index: 1;
+            padding-top: 8rem;
+        }
+
+        header, main {
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            padding: 2rem 1rem;
+        }
+
+        /* Adjust spacing for the header and search section */
+        header.container {
+            margin-bottom: 6rem; /* Increased bottom margin */
+            padding-top: 4rem;   /* Increased top padding */
+        }
+
+        /* Adjust search input container spacing */
+        .max-w-md.mx-auto {
+            margin-top: 3rem;    /* Add space above search */
+            margin-bottom: 1rem;  /* Reduced from 2rem to 1rem */
+        }
+
+        /* Adjust course grid spacing */
+        #courseGrid {
+            margin-top: 1rem;  /* Reduced from 2rem to 1rem */
+        }
+
+        /* If needed, adjust the particles container to match */
+        #particles-js {
+            top: 0;
+            height: calc(100% + 8rem); /* Increase height to account for added spacing */
+        }
+
+        /* Add a media query for mobile devices */
+        @media (max-width: 640px) {
+            .hero-title .cursive {
+                font-family: 'Dancing Script', cursive; /* Change to a cursive font */
+                font-weight: 300; /* Thinner font weight */
+                font-size: 6rem; /* Adjust size if needed */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-glow"></div>
+        <div class="hero-particles"></div>
+        <div class="hero-line"></div>
+        <div class="hero-line"></div>
+        <div class="hero-line"></div>
+        <div class="hero-line"></div>
+        <div class="hero-wave hero-wave-1"></div>
+        <div class="hero-wave hero-wave-2"></div>
+        <div class="hero-wave hero-wave-3"></div>
+        
+        <h1 class="hero-title">
+            The Beginning <span class="cursive">of</span> Infinity
+        </h1>
+        <p class="hero-subtitle">
+            Explore the boundless potential of human knowledge and progress through curiously seeking good explanations over bad ones!
+        </p>
+    </div>
+
+    <!-- Main content section -->
+    <div class="main-content">
+        <!-- Particles background -->
+        <div id="particles-js"></div>
+
+        <header class="container mx-auto px-4 py-8">
+            <h1 class="text-4xl md:text-6xl font-bold text-center mb-12 gradient-text">DBEB Course Catalog</h1>
+            <p class="text-center text-xl mb-16 opacity-80">Explore Biotechnology & Engineering Courses</p>
+            <div class="max-w-md mx-auto mt-16 mb-4">
+                <input type="text" 
+                       id="searchInput" 
+                       placeholder="Search by course code, title, professor, or category..." 
+                       class="w-full p-4 rounded-lg search-input" 
+                       onkeyup="filterCourses()">
+            </div>
+        </header>
+
+        <main class="container mx-auto px-4">
+            <div id="courseGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Courses will be dynamically inserted here -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <!-- No text content -->
+    </footer>
+
+    <script>
+        particlesJS('particles-js', {
+            particles: {
+                number: { 
+                    value: 60,         // Reduced number of particles
+                    density: { 
+                        enable: true, 
+                        value_area: 1500  // Increased area, making lines more sparse
+                    } 
+                },
+                color: { value: "#4facfe" },
+                shape: { type: "circle" },
+                opacity: { 
+                    value: 0.5, 
+                    random: false 
+                },
+                size: { 
+                    value: 3, 
+                    random: true 
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 200,      // Increased distance between connected lines
+                    color: "#4facfe",
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: false,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: "grab"
+                    },
+                    onclick: {
+                        enable: false
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 250,  // Increased grab distance
+                        line_linked: {
+                            opacity: 0.7
+                        }
+                    }
+                }
+            },
+            retina_detect: true
+        });
+
+        // Reinitialize particles on window resize
+        let resizeTimeout;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(function() {
+                if (window.pJSDom && window.pJSDom[0]) {
+                    window.pJSDom[0].pJS.fn.vendors.destroypJS();
+                    window.pJSDom.splice(0, 1);
+                    particlesJS('particles-js', /* same config as above */);
+                }
+            }, 250);
+        });
+
+        // Course data
+        const courses = [
+            {
+                code: "BBL131",
+                title: "Biochemistry",
+                professor: "Prashant Mishra",
+                link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonPcGRZiABiZHWO4PlwpnhOm",
+                category: "Biotechnology",
+                image: "https://beb.iitd.ac.in/images/prashant.jpg"
+            },
+            {
+                code: "BBL131P",
+                title: "Labs in Biochemistry",
+                professor: "Prashant Mishra",
+                link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonMf5i97x8iqGzh2eH_mLvqq",
+                category: "Biotechnology",
+                image: "https://beb.iitd.ac.in/images/prashant.jpg"
+            },
+            {
+                code: "BBL132",
+                title: "General Microbiology",
+                professor: "Shilpi Sharma",
+                link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonNi3sxMi31_7AkJc4sNNtyD",
+                category: "Biotechnology",
+                image: "https://beb.iitd.ac.in/Shilpi_latest.jpg"
+            },
+            {
+                code: "BBL133",
+                title: "Mass and Energy Balances in Biochemical Engineering",
+                professor: "Sunil Nath",
+                link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonOcjwegnuFA68-iNEzrayhL",
+                category: "Biochemical Engineering",
+                image: "https://beb.iitd.ac.in/images/sunilnath.jpg"
+            },
+            {
+                code: "BBL231",
+                title: "Molecular Biology and Genetics",
+                professor: "Preeti Srivastava",
+                link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonME8BsCeC7BISUyv5ExzxfK",
+                category: "Biotechnology",
+                image: "https://beb.iitd.ac.in/images/preeti.jpg"
+            },
+            {
+                code: "BBL331",
+                title: "Bioprocess Engineering",
+                professor: "Atul Narang",
+                link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonOXRguTR8o39VBMbOcX7uWU",
+                category: "Biochemical Engineering",
+                image: "https://beb.iitd.ac.in/images/atul_narang.jpg"
+            },
+            {
+                code: "BBL341",
+                title: "Environmental Biotechnology",
+                professor: "Saroj Mishra",
+                link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonOo3EVuACaIEsdOj_SMbNUn",
+                category: "Biotechnology",
+                image: "https://beb.iitd.ac.in/images/sarojmishra.jpg"
+            },
+            {
+                code: "BBL431",
+                title: "Bioprocess Technology",
+                professor: "Shaikh Ziauddin Ahammad",
+                link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonPjZsgnGNV_sWr0RPdNkOuz",
+                category: "Biochemical Engineering",
+                image: "https://beb.iitd.ac.in/images/zia.jpg"
+            },
+            {
+                code: "BBL432",
+                title: "Fluid Solid Systems",
+                professor: "Sunil Nath",
+                link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonMZCLnzBjhBpUo0XUVv9f36",
+                category: "Biochemical Engineering",
+                image: "https://beb.iitd.ac.in/images/sunilnath.jpg"
+            },
+            {
+                code: "BBL433",
+                title: "Enzyme Science and Engineering",
+                professor: "Krishna Jyoti Mukherjee",
+                link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonMze2MPl5E7wok1626JTMfA",
+                category: "Biochemical Engineering",
+                image: "https://beb.iitd.ac.in/images/kj.png"
+            },
+            {
+                code: "BBL433B",
+                title: "Labs on Enzyme Science and Engineering",
+                professor: "K. J. Mukherjee",
+                link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonNX14-DKk9GPNt_XQOuOvc7",
+                category: "Biochemical Engineering",
+                image: "https://beb.iitd.ac.in/images/kj.png"
+            },
+            {
+                code: "BBL434",
+                title: "Bioinformatics",
+                professor: "Ishaan Gupta",
+                link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonOX_BUfGYTN4dwWiglljyf0",
+                category: "Biotechnology",
+                image: "./quasars/ishaan.png"
+            },
+            {
+                code: "BBL733",
+                title: "Recombinant DNA Technology",
+                professor: "Ritu Kulshreshtha",
+                link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonMxoPGbahliCAvhA10qwcEg",
+                category: "Biotechnology",
+                image: "https://beb.iitd.ac.in/images/ritu.jpg"
+            },
+            {
+                code: "CLL251",
+                title: "Heat Transfer",
+                professor: "Manojkumar Charandas Remteke",
+                link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonNqG2O2LWp0N1bfRda4LMLn",
+                category: "Chemical Engineering",
+                image: "./quasars/manoj.png"
+            },
+            {
+                code: "CLL252",
+                title: "Mass Transfer",
+                professor: "Ashok N Bhaskarwar",
+                link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonNibPXcfzsC4iJQI71Qmj0u",
+                category: "Chemical Engineering",
+                image: "https://iitd.irins.org/assets/profile_images/10457.jpg"
+            },
+            {
+                code: "CLL261",
+                title: "Process Dynamics and Control",
+                professor: "Hariprasad Kodamana",
+                link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonP3rCuBCj0h3pxf4Q_emVWK",
+                category: "Chemical Engineering",
+                image: "https://abudhabi.iitd.ac.in/assets/images/hari.jpg"
+            },
+            {
+                code: "CLP301",
+                title: "Chemical Engineering Laboratory-I",
+                professor: "",
+                link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonNvDId2qHiT2Mto2tIcVG-U",
+                category: "Chemical Engineering",
+                image: "./quasars/chemical.png"
+            },
+            {
+                code: "CVL100",
+                title: "Environmental Science",
+                professor: "Gazala Habib",
+                link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonMK57aaDC7zD6VWCLVb2YIT",
+                category: "Civil Engineering",
+                image: "./quasars/gazala.png"
+            },
+            {
+                code: "HUL256",
+                title: "Critical Thinking",
+                professor: "Arudra Burra",
+                link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonODx1wr1hy-FkahpO98zSHK",
+                category: "Humanities",
+                image: "https://i1.rgstatic.net/ii/profile.image/11431281279860243-1727240593176_Q128/Arudra-Burra.jpg"
+            },
+            {
+                code: "HUL261",
+                title: "Introduction to Psychology",
+                professor: "Sumitava Mukherjee & Yashpal Jogdand",
+                link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonPSY1su7N2vhLwRYylaWprU",
+                category: "Humanities",
+                image: "https://web.iitd.ac.in/~sm1/sm2024_s.jpg"
+            },
+            {
+                code: "MLL100",
+                title: "Introduction to Materials Science and Engineering",
+                professor: "Rajesh Prasad",
+                link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonMY41hwJA8xsX4y0odNJwTH",
+                category: "Materials Science",
+                image: "./quasars/rprasad.png"
+            },
+            {
+                code: "MSL405",
+                title: "Financial Management and Compliance for Startups",
+                professor: "Shveta Singh",
+                link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonOXuhUjxSzR9gt-WnMS2pb1",
+                category: "Management",
+                image: "https://iitd.irins.org/assets/profile_images/85663.jpg"
+            },
+            {
+                code: "MSL802",
+                title: "Intellectual Property Rights Management",
+                professor: "S.K. Jain",
+                link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonOo853OouJ5t9xmFtspORxO",
+                category: "Management",
+                image: "https://dms.iitd.ac.in/wp-content/uploads/2017/09/Webp.net-resizeimage-14-263x263.jpg"
+            },
+            {
+                code: "MTL102",
+                title: "Differential Equations",
+                professor: "V. V. K. Srinivas Kumar",
+                link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonO2EtcDgOS6vP9l0osfXORs",
+                category: "Mathematics",
+                image: "https://web.iitd.ac.in/~vvksrini/Oldhomepage/srinivas.JPG"
+            },
+            {
+                code: "SBL702",
+                title: "System Biology",
+                professor: "James Gomes",
+                link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonMOVbWhGglTtMHINWg5uyBK",
+                category: "Bioloogical Sciences",
+                image: "https://cbt.iitd.ac.in/images/people/james.jpg"
+            },
+            {
+                code: "SBL704",
+                title: "Virology",
+                professor: "Vivekanandan Perumal",
+                link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonPuU4taAKKJUioY3Ijupypw",
+                category: "Bioloogical Sciences",
+                image: "https://web.iitd.ac.in/~vperumal/Vivek%20profilepic.jpg"
+            },
+            {
+                code: "SBL726",
+                title: "Molecular Motors",
+                professor: "Anita Roy",
+                link: "https://www.youtube.com/playlist?list=PLSIUNf-YNonMNkFpMq75BMgNny4kQdZgf",
+                category: "Bioloogical Sciences",
+                image: "https://iitd.irins.org/assets/profile_images/100947.jpg"
+            }
+        ];
+        
+
+        // Function to create course cards
+        function createCourseCard(course) {
+            // Helper function to get specific image styling based on professor
+            function getImageStyle(professor) {
+                const styles = {
+                    'Ishaan Gupta': 'object-position: center 50%; transform: scale(1);',  // Scale up to crop in tighter on the face
+                    'Krishna Jyoti Mukherjee': 'object-position: center 60%; transform: scale(1);',  // Scale up to crop in tighter
+                    'K. J. Mukherjee': 'object-position: center 60%; transform: scale(1);',  // Same as above
+                    'Manojkumar Charandas Remteke': 'object-position: center 0%; transform: scale(1);',
+                };
+                return styles[professor] || 'object-position: center 20%;';
+            }
+
+            const categoryClass = course.category.replace(/\s+/g, '-');
+            
+            return `
+                <div class="card rounded-xl p-6 floating card-${categoryClass}">
+                    <div class="flex flex-col h-full justify-between">
+                        <div>
+                            <div class="category-pill category-${categoryClass} mb-4">${course.category}</div>
+                            <h3 class="text-xl font-bold mb-2">${course.code}</h3>
+                            <h4 class="text-lg mb-4 break-words" style="padding-right: ${course.image ? '160px' : '0'}">${course.title}</h4>
+                            ${course.professor ? `
+                                <p class="text-sm opacity-80 mb-4 break-words" style="padding-right: ${course.image ? '160px' : '0'}">Prof. ${course.professor}</p>
+                            ` : ''}
+                        </div>
+                        <div class="mt-auto">
+                            <a href="${course.link}" target="_blank" class="youtube-button">
+                                Watch Course
+                            </a>
+                            <a href="https://rtnesharma.in/infinity/c01/${course.code}" target="_blank" class="youtube-button" style="background-color: white; color: black;">
+                                Lecture Notes
+                            </a>
+                        </div>
+                        ${course.image ? `
+                            <div class="flex-shrink-0" style="position: absolute; right: 24px;">
+                                <div class="professor-container professor-${course.category.replace(/\s+/g, '-')}" style="margin: 48px 24px 16px 24px;">
+                                    <img src="${course.image}" 
+                                         alt="Professor ${course.professor}" 
+                                         class="professor-image"
+                                         style="${getImageStyle(course.professor)}"
+                                    >
+                                </div>
+                            </div>
+                        ` : ''}
+                    </div>
+                    <div class="card-footer">
+                        <div class="wave wave-1"></div>
+                        <div class="wave wave-2"></div>
+                        <div class="wave wave-3"></div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Function to filter courses
+        function filterCourses() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const filteredCourses = courses.filter(course => 
+                course.code.toLowerCase().includes(searchTerm) ||
+                course.title.toLowerCase().includes(searchTerm) ||
+                course.professor.toLowerCase().includes(searchTerm) ||
+                course.category.toLowerCase().includes(searchTerm)
+            );
+            
+            document.getElementById('courseGrid').innerHTML = filteredCourses.map(createCourseCard).join('');
+        }
+
+        // Initial render
+        filterCourses();
+    </script>
+</body>
+</html>
