@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteBase /infinity/
+# Redirect all incorrect links to the desired URL
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ https://rtnesharma.in/infinity/biotech-courses [R=301,L]
