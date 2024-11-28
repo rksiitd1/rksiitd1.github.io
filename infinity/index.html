@@ -3,22 +3,299 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
-    <script>
-        // Redirect logic for GitHub Pages
-        const validPaths = [
-            "/infinity/biotech-courses" // Add any valid paths here
-        ];
-
-        const currentPath = window.location.pathname;
-
-        if (!validPaths.includes(currentPath)) {
-            // Redirect all invalid paths to the target page
-            window.location.href = "https://rtnesharma.in/infinity/biotech-courses";
+    <title>Visual Infinity Enhanced</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow: hidden;
         }
-    </script>
+
+        body {
+            background: #000;
+        }
+
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #three-canvas {
+            z-index: 1;
+        }
+
+        #matter-canvas {
+            z-index: 2;
+            pointer-events: all;
+        }
+
+        .glow-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            pointer-events: none;
+            mix-blend-mode: screen;
+        }
+
+        .cursor-trail {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            pointer-events: none;
+            z-index: 4;
+            mix-blend-mode: screen;
+            background: radial-gradient(circle at center, rgba(0,255,255,0.8), transparent);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .energy-field {
+            position: absolute;
+            background: radial-gradient(circle at center, 
+                rgba(64, 224, 208, 0.1), 
+                rgba(0, 255, 255, 0.05),
+                transparent);
+            border-radius: 50%;
+            mix-blend-mode: screen;
+            pointer-events: none;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            pointer-events: none;
+            background: radial-gradient(circle at center,
+                transparent 0%,
+                rgba(0,0,0,0.1) 50%,
+                rgba(0,0,0,0.3) 100%);
+        }
+    </style>
 </head>
 <body>
-    <p>Redirecting to the correct page...</p>
+    <canvas id="three-canvas"></canvas>
+    <canvas id="matter-canvas"></canvas>
+    <div class="particles"></div>
+    <div class="glow-layer"></div>
+    <div class="overlay"></div>
+
+    <script>
+        // Three.js Setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({
+            canvas: document.getElementById('three-canvas'),
+            alpha: true
+        });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        camera.position.z = 5;
+
+        // Create cosmic background
+        function createCosmicBackground() {
+            const geometry = new THREE.BufferGeometry();
+            const vertices = [];
+            const sizes = [];
+            const colors = [];
+
+            for (let i = 0; i < 10000; i++) {
+                vertices.push(
+                    (Math.random() - 0.5) * 2000,
+                    (Math.random() - 0.5) * 2000,
+                    (Math.random() - 0.5) * 2000
+                );
+
+                const color = new THREE.Color();
+                color.setHSL(Math.random(), 0.8, 0.8);
+                colors.push(color.r, color.g, color.b);
+                sizes.push(Math.random() * 4);
+            }
+
+            geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+            geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+            geometry.setAttribute('size', new THREE.Float32BufferAttribute(sizes, 1));
+
+            const material = new THREE.PointsMaterial({
+                size: 0.1,
+                vertexColors: true,
+                transparent: true
+            });
+
+            const points = new THREE.Points(geometry, material);
+            scene.add(points);
+
+            return points;
+        }
+
+        // Matter.js Setup
+        const Engine = Matter.Engine,
+              Render = Matter.Render,
+              World = Matter.World,
+              Bodies = Matter.Bodies,
+              Mouse = Matter.Mouse,
+              MouseConstraint = Matter.MouseConstraint;
+
+        const engine = Engine.create({
+            gravity: { x: 0, y: 0, scale: 0.001 }
+        });
+        
+        const render = Render.create({
+            canvas: document.querySelector('#matter-canvas'),
+            engine: engine,
+            options: {
+                width: window.innerWidth,
+                height: window.innerHeight,
+                wireframes: false,
+                background: 'transparent'
+            }
+        });
+
+        // Create interactive particles
+        function createInteractiveParticles() {
+            const particles = [];
+            const colors = [
+                '#00ffff', // Cyan
+                '#ff00ff', // Magenta
+                '#4169e1', // Royal Blue
+                '#7b68ee', // Medium Slate Blue
+                '#40e0d0'  // Turquoise
+            ];
+
+            for (let i = 0; i < 30; i++) {
+                const radius = Math.random() * 20 + 10;
+                const particle = Bodies.circle(
+                    Math.random() * window.innerWidth,
+                    Math.random() * window.innerHeight,
+                    radius,
+                    {
+                        render: {
+                            fillStyle: colors[Math.floor(Math.random() * colors.length)],
+                            opacity: 0.6,
+                            strokeStyle: '#ffffff',
+                            lineWidth: 1
+                        },
+                        restitution: 0.9,
+                        frictionAir: 0.002,
+                        density: 0.001
+                    }
+                );
+                particles.push(particle);
+            }
+
+            World.add(engine.world, particles);
+        }
+
+        // Create energy fields
+        function createEnergyFields() {
+            const container = document.querySelector('.particles');
+            for (let i = 0; i < 20; i++) {
+                const field = document.createElement('div');
+                field.className = 'energy-field';
+                const size = Math.random() * 300 + 100;
+                field.style.width = `${size}px`;
+                field.style.height = `${size}px`;
+                field.style.left = `${Math.random() * 100}%`;
+                field.style.top = `${Math.random() * 100}%`;
+                container.appendChild(field);
+
+                gsap.to(field, {
+                    x: 'random(-200, 200)',
+                    y: 'random(-200, 200)',
+                    scale: 'random(0.5, 1.5)',
+                    duration: 'random(10, 20)',
+                    repeat: -1,
+                    yoyo: true,
+                    ease: 'sine.inOut'
+                });
+            }
+        }
+
+        // Cursor trail effect
+        function createCursorTrail(e) {
+            const trail = document.createElement('div');
+            trail.className = 'cursor-trail';
+            document.body.appendChild(trail);
+            
+            trail.style.left = e.clientX + 'px';
+            trail.style.top = e.clientY + 'px';
+
+            gsap.to(trail, {
+                scale: 20,
+                opacity: 0,
+                duration: 1,
+                ease: 'power2.out',
+                onComplete: () => trail.remove()
+            });
+        }
+
+        // Initialize
+        function init() {
+            const cosmicPoints = createCosmicBackground();
+            createInteractiveParticles();
+            createEnergyFields();
+
+            // Mouse interaction
+            const mouse = Mouse.create(render.canvas);
+            const mouseConstraint = MouseConstraint.create(engine, {
+                mouse: mouse,
+                constraint: {
+                    stiffness: 0.2,
+                    render: {
+                        visible: false
+                    }
+                }
+            });
+
+            World.add(engine.world, mouseConstraint);
+            render.mouse = mouse;
+
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+                renderer.render(scene, camera);
+                cosmicPoints.rotation.y += 0.0005;
+                cosmicPoints.rotation.x += 0.0002;
+            }
+
+            // Start engines
+            Engine.run(engine);
+            Render.run(render);
+            animate();
+
+            // Event listeners
+            window.addEventListener('mousemove', createCursorTrail);
+            window.addEventListener('resize', () => {
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                render.canvas.width = window.innerWidth;
+                render.canvas.height = window.innerHeight;
+            });
+        }
+
+        window.addEventListener('load', init);
+    </script>
 </body>
 </html>
